@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
-import { useState, useEffect } from "react";
+import { use, useState, useEffect } from "react";
 
 // Mock data - In production, this would come from an API or database
 const carData: { [key: string]: any } = {
@@ -102,16 +102,17 @@ const carData: { [key: string]: any } = {
   }
 };
 
-export default function CarDetail({ params }: { params: { id: string } }) {
+export default function CarDetail({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
   const [mounted, setMounted] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [car, setCar] = useState<any>(null);
 
   useEffect(() => {
     setMounted(true);
-    const carInfo = carData[params.id] || carData["1"];
+    const carInfo = carData[id] || carData["1"];
     setCar(carInfo);
-  }, [params.id]);
+  }, [id]);
 
   if (!mounted || !car) {
     return (

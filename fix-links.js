@@ -21,7 +21,7 @@ files.forEach(f => {
   content = content.replace(/<a([^>]*?)href="#"([^>]*?)>Home<\/a>/g, '<Link$1href="/"$2>Home</Link>');
   content = content.replace(/<a([^>]*?)href="#"([^>]*?)>Catalog<\/a>/g, '<Link$1href="/catalog"$2>Catalog</Link>');
   content = content.replace(/<a([^>]*?)href="#"([^>]*?)>Contact<\/a>/g, '<Link$1href="/contact"$2>Contact</Link>');
-  content = content.replace(/<a([^>]*?)href="#"([^>]*?)>UsedCar\.id<\/a>/g, '<Link$1href="/"$2>UsedCar.id</Link>');
+  content = content.replace(/<a([^>]*?)href="#"([^>]*?)>UsedCar\.id<\/a>/g, '<Link$1href="/"$2>GarasiBoost</Link>');
   
   // Replace buttons acting as links on the homepage
   content = content.replace(/<button([^>]*?)>([\s\S]*?)Explore Catalog([\s\S]*?)<\/button>/g, '<Link href="/catalog"$1>$2Explore Catalog$3</Link>');

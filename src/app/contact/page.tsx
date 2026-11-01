@@ -70,7 +70,7 @@ export default function Contact() {
 <span className="material-symbols-outlined text-pink-600">photo_camera</span>
 </div>
 <h4 className="font-headline-md text-headline-md text-on-surface">Instagram</h4>
-<p className="text-on-surface-variant">@UsedCar.id_Official</p>
+<p className="text-on-surface-variant">@GarasiBoost_Official</p>
 </div>
 <button className="bg-on-surface text-surface px-6 py-3 rounded-full font-label-bold text-label-bold w-fit hover:scale-105 transition-transform">
                             Follow Showcase
@@ -154,7 +154,7 @@ export default function Contact() {
 <footer className="bg-surface-container-lowest py-section-gap border-t border-outline-variant/30">
 <div className="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter">
 <div className="col-span-1 md:col-span-1">
-<Link className="font-display-lg text-headline-md font-bold text-primary mb-6 block" href="/">UsedCar.id</Link>
+<Link className="font-display-lg text-headline-md font-bold text-primary mb-6 block" href="/">GarasiBoost</Link>
 <p className="text-on-surface-variant text-body-md pr-8">
                     Redefining the pre-owned vehicle marketplace with transparency and technology.
                 </p>
@@ -183,7 +183,7 @@ export default function Contact() {
 </div>
 </div>
 <div className="max-w-container-max mx-auto px-margin-desktop mt-16 pt-8 border-t border-outline-variant/10 text-center">
-<p className="text-on-surface-variant text-label-bold">© 2024 UsedCar.id. Premium Marketplace for Certified Pre-owned Vehicles.</p>
+<p className="text-on-surface-variant text-label-bold">© 2024 GarasiBoost. Premium Marketplace for Certified Pre-owned Vehicles.</p>
 </div>
 </footer>
 {/*  Micro-interaction Script  */}

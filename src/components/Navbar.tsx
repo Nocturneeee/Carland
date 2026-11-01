@@ -19,7 +19,7 @@ export default function Navbar() {
         {/* Logo + Desktop Nav */}
         <div className="flex items-center gap-6 md:gap-8">
           <Link href="/" className="text-xl md:text-2xl font-extrabold text-primary tracking-tight">
-            UsedCar.id
+            GarasiBoost
           </Link>
           <nav className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (

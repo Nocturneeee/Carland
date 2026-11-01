@@ -1,10 +1,18 @@
 "use client";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const featuredScrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollFeatured = (direction: "left" | "right") => {
+    featuredScrollRef.current?.scrollBy({
+      left: direction === "right" ? 404 : -404,
+      behavior: "smooth",
+    });
+  };
 
   useEffect(() => {
     setMounted(true);
@@ -16,7 +24,7 @@ export default function Home() {
       <header className="bg-surface/80 backdrop-blur-xl sticky top-0 z-50 border-b border-white/10 shadow-sm h-16 md:h-20 flex items-center">
         <div className="flex justify-between items-center w-full px-4 md:px-[64px] max-w-[1280px] mx-auto">
           <div className="flex items-center gap-6 md:gap-8">
-            <Link className="text-xl md:text-2xl font-extrabold text-primary tracking-tight" href="/">UsedCar.id</Link>
+            <Link className="text-xl md:text-2xl font-extrabold text-primary tracking-tight" href="/">GarasiBoost</Link>
             <nav className="hidden md:flex items-center gap-6">
               <Link className="text-primary font-bold border-b-2 border-primary pb-1 font-label-bold text-label-bold" href="/">Home</Link>
               <Link className="text-on-surface-variant hover:text-primary transition-colors font-label-bold text-label-bold" href="/catalog">Catalog</Link>
@@ -120,17 +128,27 @@ export default function Home() {
               <p className="text-sm md:text-base text-on-surface-variant">Our hand-picked selection of high-performance luxury vehicles.</p>
             </div>
             <div className="flex gap-3 md:gap-4 self-end sm:self-auto">
-              <button className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-outline flex items-center justify-center hover:bg-primary-container/10 transition-all">
+              <button
+                type="button"
+                aria-label="Show previous featured vehicle"
+                onClick={() => scrollFeatured("left")}
+                className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-outline flex items-center justify-center hover:bg-primary-container/10 transition-all"
+              >
                 <span className="material-symbols-outlined text-[20px]">chevron_left</span>
               </button>
-              <button className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary text-on-primary flex items-center justify-center hover:bg-primary/90 transition-all shadow-md">
+              <button
+                type="button"
+                aria-label="Show next featured vehicle"
+                onClick={() => scrollFeatured("right")}
+                className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary text-on-primary flex items-center justify-center hover:bg-primary/90 transition-all shadow-md"
+              >
                 <span className="material-symbols-outlined text-[20px]">chevron_right</span>
               </button>
             </div>
           </div>
 
           {/* Car Cards - horizontal scroll on mobile, flex on desktop */}
-          <div className="flex gap-4 md:gap-6 px-4 md:px-[64px] overflow-x-auto hide-scrollbar snap-x pb-8 md:pb-12">
+          <div ref={featuredScrollRef} className="flex gap-4 md:gap-6 px-4 md:px-[64px] overflow-x-auto hide-scrollbar snap-x scroll-smooth pb-8 md:pb-12">
             {/* Tesla Card */}
             <div className="min-w-[300px] sm:min-w-[340px] md:min-w-[380px] snap-center glass-card rounded-3xl group flex-shrink-0">
               <div className="relative h-48 md:h-64 rounded-t-3xl overflow-hidden">
@@ -158,9 +176,10 @@ export default function Home() {
                 </div>
                 <div className="flex justify-between items-center pt-1">
                   <span className="text-primary font-bold text-base md:text-xl">Rp 850.000.000</span>
-                  <button className="w-9 h-9 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center hover:bg-primary-container transition-all">
-                    <span className="material-symbols-outlined text-[18px]">favorite</span>
-                  </button>
+                  <Link href="/catalog/1" className="inline-flex items-center gap-1 rounded-lg bg-primary px-3 py-2 text-xs font-bold text-on-primary transition-all hover:bg-primary/90">
+                    View Details
+                    <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -192,9 +211,10 @@ export default function Home() {
                 </div>
                 <div className="flex justify-between items-center pt-1">
                   <span className="text-primary font-bold text-base md:text-xl">Rp 2.150.000.000</span>
-                  <button className="w-9 h-9 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center hover:bg-primary-container transition-all">
-                    <span className="material-symbols-outlined text-[18px]">favorite</span>
-                  </button>
+                  <Link href="/catalog/1" className="inline-flex items-center gap-1 rounded-lg bg-primary px-3 py-2 text-xs font-bold text-on-primary transition-all hover:bg-primary/90">
+                    View Details
+                    <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -226,9 +246,45 @@ export default function Home() {
                 </div>
                 <div className="flex justify-between items-center pt-1">
                   <span className="text-primary font-bold text-base md:text-xl">Rp 3.850.000.000</span>
-                  <button className="w-9 h-9 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center hover:bg-primary-container transition-all">
-                    <span className="material-symbols-outlined text-[18px]">favorite</span>
-                  </button>
+                  <Link href="/catalog/1" className="inline-flex items-center gap-1 rounded-lg bg-primary px-3 py-2 text-xs font-bold text-on-primary transition-all hover:bg-primary/90">
+                    View Details
+                    <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Porsche Card */}
+            <div className="min-w-[300px] sm:min-w-[340px] md:min-w-[380px] snap-center glass-card rounded-3xl group flex-shrink-0">
+              <div className="relative h-48 md:h-64 rounded-t-3xl overflow-hidden">
+                <img className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Porsche 911 Carrera" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80" />
+                <div className="absolute top-4 left-4 glass-card px-3 py-1 rounded-full text-xs font-bold text-primary">Exclusive</div>
+              </div>
+              <div className="p-4 md:p-6 space-y-3 md:space-y-4">
+                <div>
+                  <h3 className="font-bold text-base md:text-xl text-on-surface">Porsche 911 Carrera</h3>
+                  <p className="text-on-surface-variant text-sm font-semibold">2022 • PDK</p>
+                </div>
+                <div className="grid grid-cols-3 gap-2">
+                  <div className="p-2 bg-primary-container/10 rounded-lg text-center">
+                    <span className="block text-[10px] font-bold text-primary uppercase">Power</span>
+                    <span className="font-bold text-on-surface text-sm">385 hp</span>
+                  </div>
+                  <div className="p-2 bg-primary-container/10 rounded-lg text-center">
+                    <span className="block text-[10px] font-bold text-primary uppercase">0-100</span>
+                    <span className="font-bold text-on-surface text-sm">4.2s</span>
+                  </div>
+                  <div className="p-2 bg-primary-container/10 rounded-lg text-center">
+                    <span className="block text-[10px] font-bold text-primary uppercase">Mileage</span>
+                    <span className="font-bold text-on-surface text-sm">6k km</span>
+                  </div>
+                </div>
+                <div className="flex justify-between items-center pt-1">
+                  <span className="text-primary font-bold text-base md:text-xl">Rp 2.950.000.000</span>
+                  <Link href="/catalog" className="inline-flex items-center gap-1 rounded-lg bg-primary px-3 py-2 text-xs font-bold text-on-primary transition-all hover:bg-primary/90">
+                    View Details
+                    <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -325,7 +381,7 @@ export default function Home() {
               </li>
               <li className="flex items-center gap-2 text-sm text-on-surface-variant">
                 <span className="material-symbols-outlined text-primary text-[16px]">mail</span>
-                <a href="mailto:contact@usedcar.id" className="hover:text-primary transition-colors">contact@usedcar.id</a>
+                <a href="mailto:contact@garasiboost.id" className="hover:text-primary transition-colors">contact@garasiboost.id</a>
               </li>
               <li className="flex items-center gap-2 text-sm text-on-surface-variant">
                 <span className="material-symbols-outlined text-primary text-[16px]">call</span>
@@ -335,7 +391,7 @@ export default function Home() {
           </div>
         </div>
         <div className="max-w-[1280px] mx-auto px-4 md:px-[64px] mt-12 md:mt-20 pt-6 md:pt-8 border-t border-outline-variant/20 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs md:text-sm text-on-surface-variant text-center md:text-left">© 2024 UsedCar.id. Premium Marketplace for Certified Pre-owned Vehicles.</p>
+          <p className="text-xs md:text-sm text-on-surface-variant text-center md:text-left">© 2024 GarasiBoost. Premium Marketplace for Certified Pre-owned Vehicles.</p>
           <div className="flex gap-3">
             <a className="w-9 h-9 md:w-10 md:h-10 rounded-full glass-card flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all" href="#">
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" /></svg>
