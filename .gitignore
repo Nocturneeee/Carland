@@ -43,3 +43,6 @@ next-env.d.ts
 # local tooling / memory
 .codebase-memory/
 
+
+.vercel
+.env*

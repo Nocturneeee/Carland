@@ -1,6 +1,39 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
+
+const cars = [
+  { id: "1", brand: "BMW", year: 2022, price: 925_000_000 },
+  { id: "2", brand: "Mercedes-Benz", year: 2021, price: 845_000_000 },
+  { id: "3", brand: "Audi", year: 2022, price: 975_000_000 },
+  { id: "4", brand: "Porsche", year: 2022, price: 2_850_000_000 },
+  { id: "5", brand: "Mercedes-Benz", year: 2021, price: 1_450_000_000 },
+  { id: "6", brand: "BMW", year: 2023, price: 1_625_000_000 },
+];
+
 export default function Catalog() {
+  const [brand, setBrand] = useState("All Brands");
+  const [year, setYear] = useState("Any Year");
+  const [priceRange, setPriceRange] = useState("Any Price");
+  const [appliedFilters, setAppliedFilters] = useState({ brand: "All Brands", year: "Any Year", priceRange: "Any Price" });
+
+  const filteredCars = cars.filter((car) => {
+    const matchesBrand = appliedFilters.brand === "All Brands" || car.brand === appliedFilters.brand;
+    const matchesYear = appliedFilters.year === "Any Year" || car.year === Number(appliedFilters.year);
+    const matchesPrice =
+      appliedFilters.priceRange === "Any Price" ||
+      (appliedFilters.priceRange === "Under Rp 500M" && car.price < 500_000_000) ||
+      (appliedFilters.priceRange === "Rp 500M - 1B" && car.price >= 500_000_000 && car.price <= 1_000_000_000) ||
+      (appliedFilters.priceRange === "Rp 1B - 2B" && car.price > 1_000_000_000 && car.price <= 2_000_000_000) ||
+      (appliedFilters.priceRange === "Above 2B" && car.price > 2_000_000_000);
+
+    return matchesBrand && matchesYear && matchesPrice;
+  });
+
+  const applyFilters = () => setAppliedFilters({ brand, year, priceRange });
+
   return (
     <>
       
@@ -26,7 +59,7 @@ export default function Catalog() {
 <div className="space-y-2">
 <label className="font-label-bold text-label-bold text-on-surface-variant uppercase ml-1">Brand</label>
 <div className="relative">
-<select className="w-full bg-surface-container-lowest/50 border-outline-variant/30 rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all appearance-none">
+<select value={brand} onChange={(event) => setBrand(event.target.value)} className="w-full bg-surface-container-lowest/50 border-outline-variant/30 rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all appearance-none">
 <option>All Brands</option>
 <option>BMW</option>
 <option>Mercedes-Benz</option>
@@ -40,7 +73,7 @@ export default function Catalog() {
 <div className="space-y-2">
 <label className="font-label-bold text-label-bold text-on-surface-variant uppercase ml-1">Year</label>
 <div className="relative">
-<select className="w-full bg-surface-container-lowest/50 border-outline-variant/30 rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all appearance-none">
+<select value={year} onChange={(event) => setYear(event.target.value)} className="w-full bg-surface-container-lowest/50 border-outline-variant/30 rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all appearance-none">
 <option>Any Year</option>
 <option>2024</option>
 <option>2023</option>
@@ -54,7 +87,8 @@ export default function Catalog() {
 <div className="space-y-2">
 <label className="font-label-bold text-label-bold text-on-surface-variant uppercase ml-1">Price Range</label>
 <div className="relative">
-<select className="w-full bg-surface-container-lowest/50 border-outline-variant/30 rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all appearance-none">
+<select value={priceRange} onChange={(event) => setPriceRange(event.target.value)} className="w-full bg-surface-container-lowest/50 border-outline-variant/30 rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all appearance-none">
+<option>Any Price</option>
 <option>Under Rp 500M</option>
 <option>Rp 500M - 1B</option>
 <option>Rp 1B - 2B</option>
@@ -64,7 +98,7 @@ export default function Catalog() {
 </div>
 </div>
 </div>
-<button className="w-full lg:w-auto bg-primary text-on-primary font-label-bold text-label-bold px-10 py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-primary-container transition-all active:scale-95 btn-glow">
+<button type="button" onClick={applyFilters} className="w-full lg:w-auto bg-primary text-on-primary font-label-bold text-label-bold px-10 py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-primary-container transition-all active:scale-95 btn-glow">
 <span className="material-symbols-outlined">search</span>
                     Apply Filters
                 </button>
@@ -72,186 +106,79 @@ export default function Catalog() {
 </section>
 {/*  Product Grid  */}
 <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter mb-20">
-{/*  Car Card 1  */}
-<div className="glass-card rounded-[2rem] overflow-hidden group">
-<div className="relative h-64 overflow-hidden">
-<img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A side-profile studio shot of a sleek 2022 BMW 3 Series in mineral white metallic. The lighting is soft and cinematic, highlighting the elegant curves and aerodynamic body of the luxury sedan. The background is a minimalist, high-end showroom with subtle blue ambient glows and soft shadows, reflecting a premium and modern aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLdIE_iK2JbtyF85auxJct9pz4RP4QVYBf3BsZTpUSPUMPxQg1DVas_P5sSX95BhgPN9U0phC-XbuU3OaM7M2fS28AHfpgpEBLvPBfuxRnObNY474fG95auyv2gIzVBO_taNhpkxstJgEU3dDt93YDIzvL2oVwAMKY_wLcvXWxucomyo6VAPr9p3k6_W7OLNA6vJlOi2D-oT2KyDwQPu_QyUGATo7mlCnmA8wfKu2EmotI3IG4atlYvDRF1nKiFO8IUsPDnBQ6kQ"/>
-<div className="absolute top-4 left-4 bg-primary text-white font-label-bold text-[10px] px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">Certified</div>
-</div>
-<div className="p-8 space-y-4">
-<div className="flex justify-between items-start">
-<div>
-<h3 className="font-headline-md text-headline-md text-on-surface">BMW 3 Series 2022</h3>
-<p className="font-body-md text-body-md text-on-surface-variant mt-1">330i M Sport</p>
-</div>
-</div>
-<div className="flex flex-wrap gap-2">
-<span className="bg-primary/5 text-primary text-xs font-semibold px-3 py-1.5 rounded-lg flex items-center gap-1.5">
-<span className="material-symbols-outlined text-sm">settings</span> Automatic
-                        </span>
-<span className="bg-primary/5 text-primary text-xs font-semibold px-3 py-1.5 rounded-lg flex items-center gap-1.5">
-<span className="material-symbols-outlined text-sm">speed</span> 12.000 km
-                        </span>
-</div>
-<div className="pt-4 flex items-center justify-between border-t border-outline-variant/10">
-<div className="font-headline-md text-primary">Rp 925.000.000</div>
-</div>
-<Link href="/catalog/1" className="w-full py-4 mt-2 rounded-xl bg-surface-container-high text-on-surface font-label-bold text-label-bold transition-all hover:bg-primary hover:text-white flex items-center justify-center gap-2 group/btn">
-                        View Details
-                        <span className="material-symbols-outlined transition-transform group-hover/btn:translate-x-1">arrow_forward</span>
-</Link>
-</div>
-</div>
-{/*  Car Card 2  */}
-<div className="glass-card rounded-[2rem] overflow-hidden group">
-<div className="relative h-64 overflow-hidden">
-<img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A front-three-quarter view of a metallic obsidian black Mercedes-Benz C-Class 2021 parked in an ultra-modern architectural setting. The car's LED headlights are faintly glowing, and the polished surface reflects a soft sky-blue gradient. The image conveys high-tech sophistication and timeless luxury within a clean, airy environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARzvz8zfZR_WnOaRam0CdCoPTFZm7X25RIIszJzT6Y4Og5c5Rp6Lkhr9ffkReHqp1Sb27TQHBMIjfNqy5rKM603-On0TS80ficAVuorLOtW8-lnskwx7K_H6uWTe377zgH93qPKrlvH24pVbkZxVou3GrVl9NwMtl5V75dYAU5ULJ6QnXrED05aKDfUZKU7SUDRO68H8GM1S6mWADNp8T2u4qvWyX4pJxGqj0hoArMlpiJQg9D6azpKyT4lAGXHU2HUJE5zbmaIQ"/>
-<div className="absolute top-4 left-4 bg-tertiary-container text-on-tertiary-container font-label-bold text-[10px] px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">New Arrival</div>
-</div>
-<div className="p-8 space-y-4">
-<div className="flex justify-between items-start">
-<div>
-<h3 className="font-headline-md text-headline-md text-on-surface">Mercedes C-Class 2021</h3>
-<p className="font-body-md text-body-md text-on-surface-variant mt-1">C 200 Avantgarde</p>
-</div>
-</div>
-<div className="flex flex-wrap gap-2">
-<span className="bg-primary/5 text-primary text-xs font-semibold px-3 py-1.5 rounded-lg flex items-center gap-1.5">
-<span className="material-symbols-outlined text-sm">settings</span> Automatic
-                        </span>
-<span className="bg-primary/5 text-primary text-xs font-semibold px-3 py-1.5 rounded-lg flex items-center gap-1.5">
-<span className="material-symbols-outlined text-sm">speed</span> 18.500 km
-                        </span>
-</div>
-<div className="pt-4 flex items-center justify-between border-t border-outline-variant/10">
-<div className="font-headline-md text-primary">Rp 845.000.000</div>
-</div>
-<Link href="/catalog/2" className="w-full py-4 mt-2 rounded-xl bg-surface-container-high text-on-surface font-label-bold text-label-bold transition-all hover:bg-primary hover:text-white flex items-center justify-center gap-2 group/btn">
-                        View Details
-                        <span className="material-symbols-outlined transition-transform group-hover/btn:translate-x-1">arrow_forward</span>
-</Link>
-</div>
-</div>
-{/*  Car Card 3  */}
-<div className="glass-card rounded-[2rem] overflow-hidden group">
-<div className="relative h-64 overflow-hidden">
-<img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A dynamic shot of a Daytona Gray Audi A4 2022 driving through a minimalist urban canyon with glass-fronted buildings. The lighting is bright and optimistic, with a cool sky-blue tint. The car's design lines are emphasized by the soft, diffused daylight, creating a feeling of motion and technological advancement in a premium setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLEHl2JkRonkriiEnLqOxoHe9dmEvfgrvb3DvgcHAAP79i75FE4LqSlWFer84iDUcpaKWSUCY_FgtHDrogc56LqU3kMymGwmRiVgdrnn26rYb7lb_GjzVrjv6lre4M8nuiLSZPR4LQLanntdWOKL2yEPFooFj5-fC2dlUHbpyMRtebO0gkMJZcTGMyAy9RMc1mmjr50jCC8vbylJiquxfNth8ElE_pnUbHqEY0Ol5nJu9pO9WiZSqIKiekDcmbn4EgVF-CsGhlBA"/>
-<div className="absolute top-4 left-4 bg-primary text-white font-label-bold text-[10px] px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">Certified</div>
-</div>
-<div className="p-8 space-y-4">
-<div className="flex justify-between items-start">
-<div>
-<h3 className="font-headline-md text-headline-md text-on-surface">Audi A4 2022</h3>
-<p className="font-body-md text-body-md text-on-surface-variant mt-1">2.0 TFSI Quattro</p>
-</div>
-</div>
-<div className="flex flex-wrap gap-2">
-<span className="bg-primary/5 text-primary text-xs font-semibold px-3 py-1.5 rounded-lg flex items-center gap-1.5">
-<span className="material-symbols-outlined text-sm">settings</span> Automatic
-                        </span>
-<span className="bg-primary/5 text-primary text-xs font-semibold px-3 py-1.5 rounded-lg flex items-center gap-1.5">
-<span className="material-symbols-outlined text-sm">speed</span> 8.200 km
-                        </span>
-</div>
-<div className="pt-4 flex items-center justify-between border-t border-outline-variant/10">
-<div className="font-headline-md text-primary">Rp 975.000.000</div>
-</div>
-<Link href="/catalog/3" className="w-full py-4 mt-2 rounded-xl bg-surface-container-high text-on-surface font-label-bold text-label-bold transition-all hover:bg-primary hover:text-white flex items-center justify-center gap-2 group/btn">
-                        View Details
-                        <span className="material-symbols-outlined transition-transform group-hover/btn:translate-x-1">arrow_forward</span>
-</Link>
-</div>
-</div>
-{/*  Car Card 4  */}
-<div className="glass-card rounded-[2rem] overflow-hidden group">
-<div className="relative h-64 overflow-hidden">
-<img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A sophisticated shot of a Guards Red Porsche Taycan 2022 in a minimalist showroom environment. The car is showcased under soft, overhead studio lighting that creates elegant highlights on its futuristic silhouette. The color palette is composed of clean whites and light blues, creating a high-tech and premium atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMcS9tcGFcgyvGQ_ordB8hVho6eqyBEapj-M536F-mOSNN19XvFa1LmV_U2tvFeAPfHgJELJZAvxoo6u9fa5kddpnWN5wx8ShElm8yyDmwIqVFcNYU0QfCqtknd4HW1RX6qXfJpZx1nbH5-ZtIUJEKurPVco3XrmmcNNyrQVAZ1ez7w3A5PYhCKKY1wVUwalDZr2CY8Qy1bxAPKTX5CjCEsKamjIOm3n-i2iJ3rXEnz4y_FZvaAeDc7B5_K1eD-T9i4EnYZs0ZWg"/>
-<div className="absolute top-4 left-4 bg-primary-container text-on-primary-container font-label-bold text-[10px] px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">Performance</div>
-</div>
-<div className="p-8 space-y-4">
-<div className="flex justify-between items-start">
-<div>
-<h3 className="font-headline-md text-headline-md text-on-surface">Porsche Taycan 2022</h3>
-<p className="font-body-md text-body-md text-on-surface-variant mt-1">Taycan 4S Electric</p>
-</div>
-</div>
-<div className="flex flex-wrap gap-2">
-<span className="bg-primary/5 text-primary text-xs font-semibold px-3 py-1.5 rounded-lg flex items-center gap-1.5">
-<span className="material-symbols-outlined text-sm">bolt</span> Electric
-                        </span>
-<span className="bg-primary/5 text-primary text-xs font-semibold px-3 py-1.5 rounded-lg flex items-center gap-1.5">
-<span className="material-symbols-outlined text-sm">speed</span> 5.500 km
-                        </span>
-</div>
-<div className="pt-4 flex items-center justify-between border-t border-outline-variant/10">
-<div className="font-headline-md text-primary">Rp 2.850.000.000</div>
-</div>
-<Link href="/catalog/4" className="w-full py-4 mt-2 rounded-xl bg-surface-container-high text-on-surface font-label-bold text-label-bold transition-all hover:bg-primary hover:text-white flex items-center justify-center gap-2 group/btn">
-                        View Details
-                        <span className="material-symbols-outlined transition-transform group-hover/btn:translate-x-1">arrow_forward</span>
-</Link>
-</div>
-</div>
-{/*  Car Card 5  */}
-<div className="glass-card rounded-[2rem] overflow-hidden group">
-<div className="relative h-64 overflow-hidden">
-<img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A portrait shot of a Graphite Gray Mercedes-Benz GLE 2021 parked on a paved driveway with soft, warm morning lighting. The SUV looks powerful yet refined, with its large alloy wheels and chrome details glistening. The overall atmosphere is serene, high-end, and perfectly aligned with a premium lifestyle marketplace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUNiCbmjT_Q9pdoIf-awI3YB9kS5c_U3j6ZqNpOeyrXMLV6NLqPg9GDseBOqA7UTLAf83dZyyWqEfhyu7K1cHFwG01VxESs1Gupu02hrwJkpTRZsAq7jP-Dh2YiTYTj9Ls9Xow1j3zXs_ONgY5noYK8taewlLOS_qtYG9gywPezjVDC7O_bA61N8lV6uxj_S_ANqJbeWVaonwsCR6E_6AqQskFNQx3mKEI7vAdjMmAmJ6g1NwQ04vbspdbOzXYn4Pay4mBPX0SPQ"/>
-<div className="absolute top-4 left-4 bg-primary text-white font-label-bold text-[10px] px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">Certified</div>
-</div>
-<div className="p-8 space-y-4">
-<div className="flex justify-between items-start">
-<div>
-<h3 className="font-headline-md text-headline-md text-on-surface">Mercedes GLE 2021</h3>
-<p className="font-body-md text-body-md text-on-surface-variant mt-1">GLE 450 AMG Line</p>
-</div>
-</div>
-<div className="flex flex-wrap gap-2">
-<span className="bg-primary/5 text-primary text-xs font-semibold px-3 py-1.5 rounded-lg flex items-center gap-1.5">
-<span className="material-symbols-outlined text-sm">settings</span> Automatic
-                        </span>
-<span className="bg-primary/5 text-primary text-xs font-semibold px-3 py-1.5 rounded-lg flex items-center gap-1.5">
-<span className="material-symbols-outlined text-sm">speed</span> 15.000 km
-                        </span>
-</div>
-<div className="pt-4 flex items-center justify-between border-t border-outline-variant/10">
-<div className="font-headline-md text-primary">Rp 1.450.000.000</div>
-</div>
-<Link href="/catalog/5" className="w-full py-4 mt-2 rounded-xl bg-surface-container-high text-on-surface font-label-bold text-label-bold transition-all hover:bg-primary hover:text-white flex items-center justify-center gap-2 group/btn">
-                        View Details
-                        <span className="material-symbols-outlined transition-transform group-hover/btn:translate-x-1">arrow_forward</span>
-</Link>
-</div>
-</div>
-{/*  Car Card 6  */}
-<div className="glass-card rounded-[2rem] overflow-hidden group">
-<div className="relative h-64 overflow-hidden">
-<img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A sleek profile shot of an Alpine White BMW X5 2023. The vehicle is captured in a bright, modern studio with high-key lighting. The clean lines of the SUV are emphasized by subtle reflections on its flawless paintwork. The design feels futuristic and airy, emphasizing the premium quality of the vehicle in a minimalist environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNWlfwhfeb5nFMWN3gissKcumjTQnfrwn4cc6UeL19WCztASs8c6GxKVsqHU2Vd-3pEffRSkE7uHmEIhi1887l9HXmyYNKsIG7R65StLm7uK_4zTpRAtc5OJd7cibQoXkyMeM1lgllU2Cl5A7dZEO6DU0S3nuhnnd4-vMBdcJ1lnmOONr9imep3tWhoI3MUTIABukLZyKw7llt_dFt8fOp0LtWtTwfTv2Kqphf0RYC50n_iQ3C-kIh1A1NQeU0Izx39BcXWbOKyA"/>
-<div className="absolute top-4 left-4 bg-tertiary-container text-on-tertiary-container font-label-bold text-[10px] px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">Top Choice</div>
-</div>
-<div className="p-8 space-y-4">
-<div className="flex justify-between items-start">
-<div>
-<h3 className="font-headline-md text-headline-md text-on-surface">BMW X5 2023</h3>
-<p className="font-body-md text-body-md text-on-surface-variant mt-1">xDrive40i xLine</p>
-</div>
-</div>
-<div className="flex flex-wrap gap-2">
-<span className="bg-primary/5 text-primary text-xs font-semibold px-3 py-1.5 rounded-lg flex items-center gap-1.5">
-<span className="material-symbols-outlined text-sm">settings</span> Automatic
-                        </span>
-<span className="bg-primary/5 text-primary text-xs font-semibold px-3 py-1.5 rounded-lg flex items-center gap-1.5">
-<span className="material-symbols-outlined text-sm">speed</span> 4.100 km
-                        </span>
-</div>
-<div className="pt-4 flex items-center justify-between border-t border-outline-variant/10">
-<div className="font-headline-md text-primary">Rp 1.625.000.000</div>
-</div>
-<Link href="/catalog/6" className="w-full py-4 mt-2 rounded-xl bg-surface-container-high text-on-surface font-label-bold text-label-bold transition-all hover:bg-primary hover:text-white flex items-center justify-center gap-2 group/btn">
-                        View Details
-                        <span className="material-symbols-outlined transition-transform group-hover/btn:translate-x-1">arrow_forward</span>
-</Link>
-</div>
-</div>
+  {filteredCars.length > 0 ? (
+    filteredCars.map((car) => (
+      <div key={car.id} className="glass-card rounded-[2rem] overflow-hidden group">
+        <div className="relative h-64 overflow-hidden">
+          <img 
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+            alt={`${car.brand} ${car.year}`}
+            src={
+              car.id === "1" ? "https://lh3.googleusercontent.com/aida-public/AB6AXuCLdIE_iK2JbtyF85auxJct9pz4RP4QVYBf3BsZTpUSPUMPxQg1DVas_P5sSX95BhgPN9U0phC-XbuU3OaM7M2fS28AHfpgpEBLvPBfuxRnObNY474fG95auyv2gIzVBO_taNhpkxstJgEU3dDt93YDIzvL2oVwAMKY_wLcvXWxucomyo6VAPr9p3k6_W7OLNA6vJlOi2D-oT2KyDwQPu_QyUGATo7mlCnmA8wfKu2EmotI3IG4atlYvDRF1nKiFO8IUsPDnBQ6kQ" :
+              car.id === "2" ? "https://lh3.googleusercontent.com/aida-public/AB6AXuARzvz8zfZR_WnOaRam0CdCoPTFZm7X25RIIszJzT6Y4Og5c5Rp6Lkhr9ffkReHqp1Sb27TQHBMIjfNqy5rKM603-On0TS80ficAVuorLOtW8-lnskwx7K_H6uWTe377zgH93qPKrlvH24pVbkZxVou3GrVl9NwMtl5V75dYAU5ULJ6QnXrED05aKDfUZKU7SUDRO68H8GM1S6mWADNp8T2u4qvWyX4pJxGqj0hoArMlpiJQg9D6azpKyT4lAGXHU2HUJE5zbmaIQ" :
+              car.id === "3" ? "https://lh3.googleusercontent.com/aida-public/AB6AXuCLEHl2JkRonkriiEnLqOxoHe9dmEvfgrvb3DvgcHAAP79i75FE4LqSlWFer84iDUcpaKWSUCY_FgtHDrogc56LqU3kMymGwmRiVgdrnn26rYb7lb_GjzVrjv6lre4M8nuiLSZPR4LQLanntdWOKL2yEPFooFj5-fC2dlUHbpyMRtebO0gkMJZcTGMyAy9RMc1mmjr50jCC8vbylJiquxfNth8ElE_pnUbHqEY0Ol5nJu9pO9WiZSqIKiekDcmbn4EgVF-CsGhlBA" :
+              car.id === "4" ? "https://lh3.googleusercontent.com/aida-public/AB6AXuDMcS9tcGFcgyvGQ_ordB8hVho6eqyBEapj-M536F-mOSNN19XvFa1LmV_U2tvFeAPfHgJELJZAvxoo6u9fa5kddpnWN5wx8ShElm8yyDmwIqVFcNYU0QfCqtknd4HW1RX6qXfJpZx1nbH5-ZtIUJEKurPVco3XrmmcNNyrQVAZ1ez7w3A5PYhCKKY1wVUwalDZr2CY8Qy1bxAPKTX5CjCEsKamjIOm3n-i2iJ3rXEnz4y_FZvaAeDc7B5_K1eD-T9i4EnYZs0ZWg" :
+              car.id === "5" ? "https://lh3.googleusercontent.com/aida-public/AB6AXuCUNiCbmjT_Q9pdoIf-awI3YB9kS5c_U3j6ZqNpOeyrXMLV6NLqPg9GDseBOqA7UTLAf83dZyyWqEfhyu7K1cHFwG01VxESs1Gupu02hrwJkpTRZsAq7jP-Dh2YiTYTj9Ls9Xow1j3zXs_ONgY5noYK8taewlLOS_qtYG9gywPezjVDC7O_bA61N8lV6uxj_S_ANqJbeWVaonwsCR6E_6AqQskFNQx3mKEI7vAdjMmAmJ6g1NwQ04vbspdbOzXYn4Pay4mBPX0SPQ" :
+              "https://lh3.googleusercontent.com/aida-public/AB6AXuCNWlfwhfeb5nFMWN3gissKcumjTQnfrwn4cc6UeL19WCztASs8c6GxKVsqHU2Vd-3pEffRSkE7uHmEIhi1887l9HXmyYNKsIG7R65StLm7uK_4zTpRAtc5OJd7cibQoXkyMeM1lgllU2Cl5A7dZEO6DU0S3nuhnnd4-vMBdcJ1lnmOONr9imep3tWhoI3MUTIABukLZyKw7llt_dFt8fOp0LtWtTwfTv2Kqphf0RYC50n_iQ3C-kIh1A1NQeU0Izx39BcXWbOKyA"
+            }
+          />
+          <div className="absolute top-4 left-4 bg-primary text-white font-label-bold text-[10px] px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">
+            {car.id === "1" ? "Certified" : car.id === "2" ? "New Arrival" : car.id === "3" ? "Certified" : car.id === "4" ? "Performance" : car.id === "5" ? "Certified" : "Top Choice"}
+          </div>
+        </div>
+        <div className="p-8 space-y-4">
+          <div className="flex justify-between items-start">
+            <div>
+              <h3 className="font-headline-md text-headline-md text-on-surface">
+                {car.id === "1" && "BMW 3 Series 2022"}
+                {car.id === "2" && "Mercedes C-Class 2021"}
+                {car.id === "3" && "Audi A4 2022"}
+                {car.id === "4" && "Porsche Taycan 2022"}
+                {car.id === "5" && "Mercedes GLE 2021"}
+                {car.id === "6" && "BMW X5 2023"}
+              </h3>
+              <p className="font-body-md text-body-md text-on-surface-variant mt-1">
+                {car.id === "1" && "330i M Sport"}
+                {car.id === "2" && "C 200 Avantgarde"}
+                {car.id === "3" && "2.0 TFSI Quattro"}
+                {car.id === "4" && "Taycan 4S Electric"}
+                {car.id === "5" && "GLE 450 AMG Line"}
+                {car.id === "6" && "xDrive40i xLine"}
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <span className="bg-primary/5 text-primary text-xs font-semibold px-3 py-1.5 rounded-lg flex items-center gap-1.5">
+              <span className="material-symbols-outlined text-sm">{car.id === "4" ? "bolt" : "settings"}</span>
+              {car.id === "4" ? "Electric" : "Automatic"}
+            </span>
+            <span className="bg-primary/5 text-primary text-xs font-semibold px-3 py-1.5 rounded-lg flex items-center gap-1.5">
+              <span className="material-symbols-outlined text-sm">speed</span>
+              {car.id === "1" && "12.000 km"}
+              {car.id === "2" && "18.500 km"}
+              {car.id === "3" && "8.200 km"}
+              {car.id === "4" && "5.500 km"}
+              {car.id === "5" && "15.000 km"}
+              {car.id === "6" && "4.100 km"}
+            </span>
+          </div>
+          <div className="pt-4 flex items-center justify-between border-t border-outline-variant/10">
+            <div className="font-headline-md text-primary">
+              Rp {car.price.toLocaleString("id-ID")}
+            </div>
+          </div>
+          <Link href={`/catalog/${car.id}`} className="w-full py-4 mt-2 rounded-xl bg-surface-container-high text-on-surface font-label-bold text-label-bold transition-all hover:bg-primary hover:text-white flex items-center justify-center gap-2 group/btn">
+            View Details
+            <span className="material-symbols-outlined transition-transform group-hover/btn:translate-x-1">arrow_forward</span>
+          </Link>
+        </div>
+      </div>
+    ))
+  ) : (
+    <div className="col-span-full text-center py-12">
+      <p className="text-on-surface-variant text-lg">No vehicles match your filters. Try adjusting your criteria.</p>
+    </div>
+  )}
 </section>
 {/*  Pagination  */}
 <div className="flex justify-center items-center gap-4 mb-20">
