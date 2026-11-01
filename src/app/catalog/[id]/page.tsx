@@ -2,115 +2,17 @@
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import { use, useState, useEffect } from "react";
-
-// Mock data - In production, this would come from an API or database
-const carData: { [key: string]: any } = {
-  "1": {
-    id: "1",
-    make: "BMW",
-    model: "3 Series",
-    variant: "330i M Sport",
-    year: 2022,
-    color: "Mineral White Metallic",
-    price: 925000000,
-    images: [
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCLdIE_iK2JbtyF85auxJct9pz4RP4QVYBf3BsZTpUSPUMPxQg1DVas_P5sSX95BhgPN9U0phC-XbuU3OaM7M2fS28AHfpgpEBLvPBfuxRnObNY474fG95auyv2gIzVBO_taNhpkxstJgEU3dDt93YDIzvL2oVwAMKY_wLcvXWxucomyo6VAPr9p3k6_W7OLNA6vJlOi2D-oT2KyDwQPu_QyUGATo7mlCnmA8wfKu2EmotI3IG4atlYvDRF1nKiFO8IUsPDnBQ6kQ",
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCLdIE_iK2JbtyF85auxJct9pz4RP4QVYBf3BsZTpUSPUMPxQg1DVas_P5sSX95BhgPN9U0phC-XbuU3OaM7M2fS28AHfpgpEBLvPBfuxRnObNY474fG95auyv2gIzVBO_taNhpkxstJgEU3dDt93YDIzvL2oVwAMKY_wLcvXWxucomyo6VAPr9p3k6_W7OLNA6vJlOi2D-oT2KyDwQPu_QyUGATo7mlCnmA8wfKu2EmotI3IG4atlYvDRF1nKiFO8IUsPDnBQ6kQ",
-    ],
-    transmission: "Automatic",
-    engineCapacity: 1998,
-    fuelType: "Gasoline",
-    drivetrain: "RWD",
-    mileage: 12000,
-    owners: 1,
-    serviceHistory: "Complete service history at authorized BMW dealer",
-    taxStatus: "Valid until December 2026",
-    documents: {
-      stnk: true,
-      bpkb: true,
-      invoice: true,
-      nik: true
-    },
-    licensePlate: "B 1234 XYZ",
-    plateType: "Genap (Even)",
-    features: {
-      airbags: "6 Airbags",
-      abs: true,
-      seatMaterial: "Dakota Leather",
-      sunroof: true,
-      headUnit: "10.25\" BMW Live Cockpit Professional"
-    },
-    condition: {
-      floodFree: true,
-      accidentFree: true,
-      ac: "Cold & functioning perfectly",
-      suspension: "Quiet, no abnormal sounds"
-    },
-    badge: "Certified",
-    power: "258 hp",
-    torque: "400 Nm",
-    acceleration: "5.8s (0-100 km/h)",
-    seats: 5,
-    description: "Exceptional condition BMW 3 Series with full M Sport package. This vehicle has been meticulously maintained with complete service records. Features the latest generation iDrive system with gesture control, ambient lighting, and premium sound system."
-  },
-  "2": {
-    id: "2",
-    make: "Mercedes-Benz",
-    model: "C-Class",
-    variant: "C 200 Avantgarde",
-    year: 2021,
-    color: "Obsidian Black",
-    price: 845000000,
-    images: [
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuARzvz8zfZR_WnOaRam0CdCoPTFZm7X25RIIszJzT6Y4Og5c5Rp6Lkhr9ffkReHqp1Sb27TQHBMIjfNqy5rKM603-On0TS80ficAVuorLOtW8-lnskwx7K_H6uWTe377zgH93qPKrlvH24pVbkZxVou3GrVl9NwMtl5V75dYAU5ULJ6QnXrED05aKDfUZKU7SUDRO68H8GM1S6mWADNp8T2u4qvWyX4pJxGqj0hoArMlpiJQg9D6azpKyT4lAGXHU2HUJE5zbmaIQ",
-    ],
-    transmission: "Automatic (9G-Tronic)",
-    engineCapacity: 1496,
-    fuelType: "Gasoline",
-    drivetrain: "RWD",
-    mileage: 18500,
-    owners: 1,
-    serviceHistory: "Full Mercedes-Benz service record",
-    taxStatus: "Valid until October 2026",
-    documents: {
-      stnk: true,
-      bpkb: true,
-      invoice: true,
-      nik: true
-    },
-    licensePlate: "B 5678 ABC",
-    plateType: "Genap (Even)",
-    features: {
-      airbags: "7 Airbags",
-      abs: true,
-      seatMaterial: "Artico Leather",
-      sunroof: true,
-      headUnit: "MBUX 10.25\" Touchscreen"
-    },
-    condition: {
-      floodFree: true,
-      accidentFree: true,
-      ac: "Excellent cooling performance",
-      suspension: "Perfect condition"
-    },
-    badge: "New Arrival",
-    power: "184 hp",
-    torque: "280 Nm",
-    acceleration: "7.7s (0-100 km/h)",
-    seats: 5,
-    description: "Stunning Mercedes-Benz C-Class in pristine condition. Equipped with the latest MBUX infotainment system, LED High Performance headlights, and Avantgarde styling package. Single owner vehicle with impeccable maintenance history."
-  }
-};
+import { getVehicleById, Vehicle } from "@/lib/vehicleStore";
 
 export default function CarDetail({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
   const [mounted, setMounted] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [car, setCar] = useState<any>(null);
+  const [car, setCar] = useState<Vehicle | null>(null);
 
   useEffect(() => {
     setMounted(true);
-    const carInfo = carData[id] || carData["1"];
+    const carInfo = getVehicleById(id);
     setCar(carInfo);
   }, [id]);
 
@@ -363,11 +265,11 @@ export default function CarDetail({ params }: { params: Promise<{ id: string }> 
               </div>
               <div className="flex justify-between py-3 border-b border-outline-variant/10">
                 <span className="text-on-surface-variant">License Plate</span>
-                <span className="font-semibold text-on-surface">{car.licensePlate}</span>
+                <span className="font-semibold text-on-surface">Available on request</span>
               </div>
               <div className="flex justify-between py-3">
                 <span className="text-on-surface-variant">Plate Type</span>
-                <span className="font-semibold text-on-surface">{car.plateType}</span>
+                <span className="font-semibold text-on-surface">-</span>
               </div>
             </div>
             <div>
@@ -385,17 +287,11 @@ export default function CarDetail({ params }: { params: Promise<{ id: string }> 
                   </span>
                   <span className="font-semibold text-on-surface">BPKB</span>
                 </div>
-                <div className={`flex items-center gap-2 p-3 rounded-xl ${car.documents.invoice ? 'bg-primary/10' : 'bg-error/10'}`}>
-                  <span className={`material-symbols-outlined ${car.documents.invoice ? 'text-primary' : 'text-error'}`}>
-                    {car.documents.invoice ? 'check_circle' : 'cancel'}
+                <div className={`flex items-center gap-2 p-3 rounded-xl ${car.documents.faktur ? 'bg-primary/10' : 'bg-error/10'}`}>
+                  <span className={`material-symbols-outlined ${car.documents.faktur ? 'text-primary' : 'text-error'}`}>
+                    {car.documents.faktur ? 'check_circle' : 'cancel'}
                   </span>
-                  <span className="font-semibold text-on-surface">Invoice</span>
-                </div>
-                <div className={`flex items-center gap-2 p-3 rounded-xl ${car.documents.nik ? 'bg-primary/10' : 'bg-error/10'}`}>
-                  <span className={`material-symbols-outlined ${car.documents.nik ? 'text-primary' : 'text-error'}`}>
-                    {car.documents.nik ? 'check_circle' : 'cancel'}
-                  </span>
-                  <span className="font-semibold text-on-surface">NIK</span>
+                  <span className="font-semibold text-on-surface">Faktur</span>
                 </div>
               </div>
             </div>
@@ -417,28 +313,28 @@ export default function CarDetail({ params }: { params: Promise<{ id: string }> 
                 <span className="material-symbols-outlined text-primary mt-0.5">security</span>
                 <div>
                   <p className="font-semibold text-on-surface">Safety</p>
-                  <p className="text-sm text-on-surface-variant">{car.features.airbags} • {car.features.abs ? 'ABS' : 'No ABS'}</p>
+                  <p className="text-sm text-on-surface-variant">{car.specifications.safety.airbags} Airbags • {car.specifications.safety.abs ? 'ABS' : 'No ABS'}</p>
                 </div>
               </div>
               <div className="flex items-start gap-3 p-4 bg-surface-container-lowest rounded-xl">
                 <span className="material-symbols-outlined text-primary mt-0.5">event_seat</span>
                 <div>
-                  <p className="font-semibold text-on-surface">Interior</p>
-                  <p className="text-sm text-on-surface-variant">{car.features.seatMaterial}</p>
+                  <p className="font-semibold text-on-surface">Seats</p>
+                  <p className="text-sm text-on-surface-variant">{car.specifications.comfort.seats} Seats</p>
                 </div>
               </div>
               <div className="flex items-start gap-3 p-4 bg-surface-container-lowest rounded-xl">
-                <span className="material-symbols-outlined text-primary mt-0.5">{car.features.sunroof ? 'check_circle' : 'cancel'}</span>
+                <span className="material-symbols-outlined text-primary mt-0.5">ac_unit</span>
                 <div>
-                  <p className="font-semibold text-on-surface">Sunroof</p>
-                  <p className="text-sm text-on-surface-variant">{car.features.sunroof ? 'Available' : 'Not available'}</p>
+                  <p className="font-semibold text-on-surface">Climate Control</p>
+                  <p className="text-sm text-on-surface-variant">{car.specifications.comfort.acType}</p>
                 </div>
               </div>
               <div className="flex items-start gap-3 p-4 bg-surface-container-lowest rounded-xl">
-                <span className="material-symbols-outlined text-primary mt-0.5">screen_search_desktop</span>
+                <span className="material-symbols-outlined text-primary mt-0.5">speaker</span>
                 <div>
-                  <p className="font-semibold text-on-surface">Head Unit</p>
-                  <p className="text-sm text-on-surface-variant">{car.features.headUnit}</p>
+                  <p className="font-semibold text-on-surface">Audio System</p>
+                  <p className="text-sm text-on-surface-variant">{car.specifications.comfort.audioSystem}</p>
                 </div>
               </div>
             </div>
@@ -457,28 +353,28 @@ export default function CarDetail({ params }: { params: Promise<{ id: string }> 
                 <span className="material-symbols-outlined text-primary mt-0.5">check_circle</span>
                 <div>
                   <p className="font-semibold text-on-surface">Flood-Free</p>
-                  <p className="text-sm text-on-surface-variant">{car.condition.floodFree ? 'Verified flood-free history' : 'History unclear'}</p>
+                  <p className="text-sm text-on-surface-variant">{car.specifications.condition.floodFree ? 'Verified flood-free history' : 'History unclear'}</p>
                 </div>
               </div>
               <div className="flex items-start gap-3 p-4 bg-primary/5 rounded-xl border border-primary/20">
                 <span className="material-symbols-outlined text-primary mt-0.5">check_circle</span>
                 <div>
                   <p className="font-semibold text-on-surface">Accident-Free</p>
-                  <p className="text-sm text-on-surface-variant">{car.condition.accidentFree ? 'No major accidents reported' : 'Minor accident history'}</p>
+                  <p className="text-sm text-on-surface-variant">{car.specifications.condition.accidentFree ? 'No accident records' : 'Has accident history'}</p>
                 </div>
               </div>
               <div className="flex items-start gap-3 p-4 bg-primary/5 rounded-xl border border-primary/20">
                 <span className="material-symbols-outlined text-primary mt-0.5">ac_unit</span>
                 <div>
                   <p className="font-semibold text-on-surface">Air Conditioning</p>
-                  <p className="text-sm text-on-surface-variant">{car.condition.ac}</p>
+                  <p className="text-sm text-on-surface-variant">{car.specifications.condition.ac}</p>
                 </div>
               </div>
               <div className="flex items-start gap-3 p-4 bg-primary/5 rounded-xl border border-primary/20">
                 <span className="material-symbols-outlined text-primary mt-0.5">tune</span>
                 <div>
                   <p className="font-semibold text-on-surface">Suspension</p>
-                  <p className="text-sm text-on-surface-variant">{car.condition.suspension}</p>
+                  <p className="text-sm text-on-surface-variant">{car.specifications.condition.suspension}</p>
                 </div>
               </div>
             </div>
