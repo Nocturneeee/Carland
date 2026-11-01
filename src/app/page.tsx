@@ -1,10 +1,13 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
   const featuredScrollRef = useRef<HTMLDivElement>(null);
 
   const scrollFeatured = (direction: "left" | "right") => {
@@ -22,16 +25,17 @@ export default function Home() {
     <>
       {/* TopNavBar */}
       <header className="bg-surface/80 backdrop-blur-xl sticky top-0 z-50 border-b border-white/10 shadow-sm h-16 md:h-20 flex items-center">
-        <div className="flex justify-between items-center w-full px-4 md:px-[64px] max-w-[1280px] mx-auto">
+        <div className="flex h-full w-full max-w-container-max mx-auto items-center justify-between px-margin-mobile md:px-margin-desktop">
           <div className="flex items-center gap-6 md:gap-8">
             <Link className="text-xl md:text-2xl font-extrabold text-primary tracking-tight" href="/">GarasiBoost</Link>
             <nav className="hidden md:flex items-center gap-6">
-              <Link className="text-primary font-bold border-b-2 border-primary pb-1 font-label-bold text-label-bold" href="/">Home</Link>
-              <Link className="text-on-surface-variant hover:text-primary transition-colors font-label-bold text-label-bold" href="/catalog">Catalog</Link>
-              <Link className="text-on-surface-variant hover:text-primary transition-colors font-label-bold text-label-bold" href="/contact">Contact</Link>
+              <Link aria-current={pathname === "/" ? "page" : undefined} className={`nav-menu-link pb-1 font-label-bold text-label-bold transition-colors ${pathname === "/" ? "text-primary font-bold" : "text-on-surface-variant hover:text-primary"}`} href="/">Home</Link>
+              <Link aria-current={pathname === "/catalog" ? "page" : undefined} className={`nav-menu-link pb-1 font-label-bold text-label-bold transition-colors ${pathname === "/catalog" ? "text-primary font-bold" : "text-on-surface-variant hover:text-primary"}`} href="/catalog">Catalog</Link>
+              <Link aria-current={pathname === "/contact" ? "page" : undefined} className={`nav-menu-link pb-1 font-label-bold text-label-bold transition-colors ${pathname === "/contact" ? "text-primary font-bold" : "text-on-surface-variant hover:text-primary"}`} href="/contact">Contact</Link>
             </nav>
           </div>
           <div className="flex items-center gap-2 md:gap-4">
+            <ThemeToggle />
             <Link href="/admin" className="hidden md:block font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors">Admin Login</Link>
             <div className="flex items-center justify-center w-9 h-9 md:w-10 md:h-10 rounded-full hover:bg-primary-container/10 transition-all duration-300 active:scale-95">
               <span className="material-symbols-outlined text-primary text-[22px]">admin_panel_settings</span>
@@ -60,6 +64,10 @@ export default function Home() {
                 <span className="material-symbols-outlined text-[20px]">contact_support</span> Contact
               </Link>
               <hr className="border-outline-variant/20 my-1" />
+              <div className="flex items-center justify-between px-4 py-2">
+                <span className="text-sm font-semibold text-on-surface-variant">Appearance</span>
+                <ThemeToggle />
+              </div>
               <Link href="/admin" className="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-primary/5 rounded-xl transition-all" onClick={() => setMobileMenuOpen(false)}>
                 <span className="material-symbols-outlined text-[20px]">admin_panel_settings</span> Admin Login
               </Link>

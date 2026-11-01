@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -26,11 +27,12 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={
+                aria-current={pathname === link.href ? "page" : undefined}
+                className={`nav-menu-link pb-1 text-sm font-semibold transition-colors ${
                   pathname === link.href
-                    ? "text-primary font-bold border-b-2 border-primary pb-1 text-sm font-semibold"
-                    : "text-on-surface-variant hover:text-primary transition-colors text-sm font-semibold"
-                }
+                    ? "text-primary font-bold"
+                    : "text-on-surface-variant hover:text-primary"
+                }`}
               >
                 {link.label}
               </Link>
@@ -39,7 +41,8 @@ export default function Navbar() {
         </div>
 
         {/* Right Side */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
           <Link href="/admin" className="hidden md:flex items-center gap-1.5 text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors px-3 py-1.5 rounded-lg hover:bg-primary/5">
             <span className="material-symbols-outlined text-[18px]">admin_panel_settings</span>
             Admin Login
@@ -77,6 +80,10 @@ export default function Navbar() {
               </Link>
             ))}
             <hr className="border-outline-variant/20 my-1" />
+            <div className="flex items-center justify-between px-4 py-2">
+              <span className="text-sm font-semibold text-on-surface-variant">Appearance</span>
+              <ThemeToggle />
+            </div>
             <Link
               href="/admin"
               onClick={() => setMenuOpen(false)}

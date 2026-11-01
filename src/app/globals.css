@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Enable Tailwind's `dark:` variant when the theme class is on <html>. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-tertiary-fixed: #ffdcc3;
   --color-background: #f7f9fb;
@@ -114,10 +117,50 @@
   }
 }
 
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+  --color-background: #101418;
+  --color-surface: #101418;
+  --color-surface-bright: #363b40;
+  --color-surface-dim: #101418;
+  --color-surface-variant: #43474e;
+  --color-surface-container-lowest: #0b0f12;
+  --color-surface-container-low: #1a1e22;
+  --color-surface-container: #1e2227;
+  --color-surface-container-high: #292d32;
+  --color-surface-container-highest: #34383d;
+  --color-on-surface: #e1e7ed;
+  --color-on-background: #e1e7ed;
+  --color-on-surface-variant: #bec7d4;
+  --color-outline: #88919d;
+  --color-outline-variant: #3f4852;
+  --color-primary: #99cbff;
+  --color-on-primary: #003353;
+  --color-primary-container: #004b77;
+  --color-on-primary-container: #cfe5ff;
+  --color-secondary: #b1d5fd;
+  --color-on-secondary: #0b1e30;
+  --color-secondary-container: #24496b;
+  --color-on-secondary-container: #cfe5ff;
+  --color-tertiary: #ffb77d;
+  --color-on-tertiary: #4b2500;
+  --color-tertiary-container: #6e3900;
+  --color-on-tertiary-container: #ffdcc3;
+  --color-error: #ffb4ab;
+  --color-error-container: #93000a;
+  --color-on-error: #690005;
+  --color-on-error-container: #ffdad6;
+}
+
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
   color: var(--color-on-surface);
   background-color: var(--color-background);
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 @layer components {
@@ -126,6 +169,14 @@ body {
                   radial-gradient(at 100% 0%, #00a3ff 0%, transparent 50%),
                   radial-gradient(at 50% 100%, #ffffff 0%, transparent 50%);
       background-color: #f7f9fb;
+      transition: background 0.25s ease, background-color 0.25s ease;
+  }
+
+  .dark .mesh-gradient {
+      background: radial-gradient(at 0% 0%, #123654 0%, transparent 52%),
+                  radial-gradient(at 100% 0%, #004b77 0%, transparent 52%),
+                  radial-gradient(at 50% 100%, #101418 0%, transparent 55%);
+      background-color: #101418;
   }
 
   .glass-card {
@@ -134,6 +185,13 @@ body {
       -webkit-backdrop-filter: blur(20px);
       border: 1px solid rgba(255, 255, 255, 0.3);
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+      transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.3s ease;
+  }
+
+  .dark .glass-card {
+      background-color: rgba(30, 34, 39, 0.78);
+      border-color: rgba(190, 199, 212, 0.14);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.28);
   }
 
   .glass-card:hover {
@@ -152,6 +210,37 @@ body {
   .floating-anim {
       animation: floating 3s ease-in-out infinite;
   }
+}
+
+/* The active navigation indicator moves between menu items without animating page content. */
+.nav-menu-link {
+    position: relative;
+    isolation: isolate;
+}
+
+.nav-menu-link::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -6px;
+    left: 0;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--color-primary);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-menu-link:hover::after,
+.nav-menu-link[aria-current="page"]::after {
+    transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .nav-menu-link::after {
+        transition: none;
+    }
 }
 
 .material-symbols-outlined {
