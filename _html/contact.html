@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact Us | UsedCar.id</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"tertiary-fixed": "#ffdcc3", background: "#f7f9ff", "secondary-fixed": "#cfe5ff", "inverse-on-surface": "#edf1f9", surface: "#f7f9ff", "on-primary-container": "#003253", "on-tertiary-fixed": "#2f1500", "on-surface": "#171c21", "on-surface-variant": "#3f4852", "primary-fixed": "#cfe5ff", "on-error-container": "#93000a", "on-background": "#171c21", "surface-tint": "#00629d", "on-secondary-fixed-variant": "#24496b", "surface-container-high": "#e4e8f0", "surface-container-highest": "#dfe3ea", "on-primary": "#ffffff", "error-container": "#ffdad6", tertiary: "#914d00", "secondary-fixed-dim": "#a6caf1", "surface-container-low": "#f0f4fc", error: "#ba1a1a", "surface-container": "#eaeef6", "outline-variant": "#bec7d4", "inverse-primary": "#99cbff", outline: "#6f7883", "on-secondary-fixed": "#001d34", "on-secondary-container": "#395c7f", "on-error": "#ffffff", "surface-variant": "#dfe3ea", "on-secondary": "#ffffff", primary: "#00629d", "on-primary-fixed": "#001d34", "on-tertiary-container": "#4b2500", "on-primary-fixed-variant": "#004a78", "surface-container-lowest": "#ffffff", "tertiary-fixed-dim": "#ffb77d", secondary: "#3e6184", "on-tertiary": "#ffffff", "secondary-container": "#b1d5fd", "on-tertiary-fixed-variant": "#6e3900", "primary-fixed-dim": "#99cbff", "primary-container": "#029df7", "surface-dim": "#d6dae2", "inverse-surface": "#2c3137", "tertiary-container": "#e37c02", "surface-bright": "#f7f9ff"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}, spacing: {"margin-desktop": "64px", "container-max": "1280px", "margin-mobile": "20px", "element-gap": "16px", "section-gap": "120px", gutter: "24px"}, fontFamily: {"display-lg": ["Plus Jakarta Sans"], "label-bold": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Plus Jakarta Sans"], headline: ["Plus Jakarta Sans"], display: ["Plus Jakarta Sans"], body: ["Plus Jakarta Sans"], label: ["Plus Jakarta Sans"]}, fontSize: {"display-lg": ["64px", {lineHeight: "1.1", letterSpacing: "-0.04em", fontWeight: "800"}], "label-bold": ["14px", {lineHeight: "1.4", letterSpacing: "0.05em", fontWeight: "600"}], "body-md": ["16px", {lineHeight: "1.6", fontWeight: "400"}], "headline-md": ["24px", {lineHeight: "1.3", fontWeight: "700"}], "body-lg": ["18px", {lineHeight: "1.6", fontWeight: "400"}], "headline-lg": ["40px", {lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "700"}], "headline-lg-mobile": ["32px", {lineHeight: "1.2", fontWeight: "700"}]}}}};</script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 30px 60px rgba(0, 98, 157, 0.1);
+        }
+        .mesh-bg {
+            background-color: #f7f9fb;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(207, 229, 255, 0.3) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(102, 255, 142, 0.1) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(0, 163, 255, 0.05) 0px, transparent 50%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .whatsapp-hover:hover {
+            background-color: #25D366;
+            color: white;
+            border-color: #25D366;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md mesh-bg min-h-screen">
+<!-- TopNavBar -->
+<header class="bg-surface/70 backdrop-blur-xl docked full-width top-0 sticky z-50 shadow-sm border-b border-white/10">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto h-20">
+<a class="font-display-lg text-headline-md font-extrabold text-primary tracking-tight" href="#">UsedCar.id</a>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-bold text-label-bold" href="#">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-bold text-label-bold" href="#">Catalog</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-bold text-label-bold" href="#">Contact</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="hidden lg:flex items-center gap-2 text-primary font-label-bold text-label-bold hover:bg-primary-container/10 transition-all px-4 py-2 rounded-xl">
+<span class="material-symbols-outlined" data-icon="admin_panel_settings">admin_panel_settings</span>
+                    Admin Login
+                </button>
+<button class="md:hidden text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</div>
+</header>
+<main class="relative">
+<!-- Hero Section -->
+<section class="pt-24 pb-12 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto text-center">
+<span class="inline-block px-4 py-1.5 rounded-full bg-primary-container/10 text-primary font-label-bold text-label-bold mb-6">
+                WE'RE HERE TO HELP
+            </span>
+<h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg text-on-surface mb-6">
+                Let's find your <span class="text-primary">perfect drive</span>.
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                Whether you're looking to buy, sell, or just have a question about our certified inventory, our team of specialists is ready to assist you.
+            </p>
+</section>
+<!-- Main Contact Cards -->
+<section class="py-12 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- WhatsApp Card -->
+<a class="glass-card p-10 flex flex-col items-center text-center group" href="https://wa.me/1234567890" target="_blank">
+<div class="w-16 h-16 rounded-2xl bg-[#25D366]/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[#25D366] text-4xl" style="font-variation-settings: 'FILL' 1;">chat</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">Chat via WhatsApp</h3>
+<p class="text-on-surface-variant mb-8 max-w-xs">Connect instantly with our sales team for real-time inventory updates and pricing details.</p>
+<span class="inline-flex items-center gap-2 text-[#25D366] font-label-bold text-label-bold border border-[#25D366]/30 px-6 py-3 rounded-xl hover:bg-[#25D366] hover:text-white transition-all">
+                        Message Us Now
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</span>
+</a>
+<!-- Email Card -->
+<a class="glass-card p-10 flex flex-col items-center text-center group" href="mailto:hello@usedcar.id">
+<div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">mail</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">Email Our Team</h3>
+<p class="text-on-surface-variant mb-8 max-w-xs">For partnerships, fleet inquiries, or detailed documentation, send us a formal request anytime.</p>
+<span class="inline-flex items-center gap-2 text-primary font-label-bold text-label-bold border border-primary/30 px-6 py-3 rounded-xl hover:bg-primary hover:text-white transition-all">
+                        Send an Email
+                        <span class="material-symbols-outlined">alternate_email</span>
+</span>
+</a>
+</div>
+</section>
+<!-- Social Media Bento Grid -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+<div class="text-left">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Connect Digitally</h2>
+<p class="text-on-surface-variant">Follow us for daily new arrivals and automotive insights.</p>
+</div>
+<div class="flex gap-2">
+<div class="w-12 h-1 rounded-full bg-primary"></div>
+<div class="w-4 h-1 rounded-full bg-outline-variant"></div>
+<div class="w-4 h-1 rounded-full bg-outline-variant"></div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-gutter h-auto md:h-[500px]">
+<!-- Instagram (Large) -->
+<div class="md:col-span-2 md:row-span-2 glass-card overflow-hidden relative group">
+<div class="absolute inset-0 z-0 opacity-20 group-hover:opacity-40 transition-opacity duration-700 bg-cover bg-center" data-alt="A premium luxury sports car parked in a minimalist high-tech showroom with soft blue neon lighting, reflecting a futuristic and polished automotive marketplace aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC28fpssb68ilF2nxr27YQV7JM_V2DicwoiiQzyHvhDWrAW6FyxIjcQJVHq5dhLkmdPVz4EHayk3RAPqilDFjeag4y5aWF3awBrs_kXGJ2HyQD2Q2BBIk43UmOItYCA-kpCl0K8ORv3qhg8lrlLxyjO65xZ0U6FFx2tdW4aIavHt6nGecbCcyMBesZejvAGX7luOjS3U-E10uBRklqpZhyR4fuSJu5ASIwh6xO404afBWtmuSDV3USHGppIeamjOqn6WfPG_AW0Ng')"></div>
+<div class="relative z-10 p-8 h-full flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-pink-600">photo_camera</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface">Instagram</h4>
+<p class="text-on-surface-variant">@UsedCar.id_Official</p>
+</div>
+<button class="bg-on-surface text-surface px-6 py-3 rounded-full font-label-bold text-label-bold w-fit hover:scale-105 transition-transform">
+                            Follow Showcase
+                        </button>
+</div>
+</div>
+<!-- TikTok -->
+<div class="md:col-span-1 glass-card p-6 flex flex-col justify-between group">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 bg-black rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-xl">music_note</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">north_east</span>
+</div>
+<div>
+<h4 class="font-label-bold text-label-bold text-on-surface">TikTok</h4>
+<p class="text-body-md text-on-surface-variant text-sm">Car reviews &amp; POV drives</p>
+</div>
+</div>
+<!-- Facebook -->
+<div class="md:col-span-1 glass-card p-6 flex flex-col justify-between group">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 bg-[#1877F2] rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-xl">groups</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">north_east</span>
+</div>
+<div>
+<h4 class="font-label-bold text-label-bold text-on-surface">Facebook</h4>
+<p class="text-body-md text-on-surface-variant text-sm">Join our buyer community</p>
+</div>
+</div>
+<!-- Twitter/X -->
+<div class="md:col-span-2 glass-card p-6 flex items-center gap-6 group">
+<div class="w-14 h-14 bg-on-surface-variant/10 rounded-full flex items-center justify-center flex-shrink-0 group-hover:rotate-12 transition-transform">
+<span class="material-symbols-outlined text-on-surface text-2xl">chat_bubble</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-label-bold text-label-bold text-on-surface">Direct Inquiry</h4>
+<p class="text-on-surface-variant text-sm">Average response time: &lt; 2 hours</p>
+</div>
+<button class="p-3 rounded-full bg-primary-container/10 text-primary">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Newsletter / Contact Map Section -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto mb-20">
+<div class="glass-card rounded-[32px] overflow-hidden grid grid-cols-1 lg:grid-cols-2">
+<div class="p-12 md:p-20 flex flex-col justify-center">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-6">Visit Our Experience Center</h2>
+<div class="space-y-6 mb-10">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary mt-1">location_on</span>
+<div>
+<p class="font-label-bold text-label-bold text-on-surface">Jakarta Headquarters</p>
+<p class="text-on-surface-variant">Sudirman Central Business District, Lot 11, Jakarta 12190</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary mt-1">schedule</span>
+<div>
+<p class="font-label-bold text-label-bold text-on-surface">Operating Hours</p>
+<p class="text-on-surface-variant">Mon - Fri: 09:00 - 18:00<br/>Sat - Sun: 10:00 - 15:00</p>
+</div>
+</div>
+</div>
+<button class="bg-primary text-on-primary font-label-bold text-label-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-primary/30 transition-all w-fit">
+                        Get Directions
+                    </button>
+</div>
+<div class="h-[400px] lg:h-auto min-h-[400px] relative">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A clean, minimalist 3D map rendering of a modern urban business district in Jakarta, focusing on a futuristic automotive showroom location, styled with vibrant sky-blue highlights and soft shadows on a white base." data-location="Jakarta" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuByWpaAVG0AKA1fs3odj9biHFzvMoyWD_aOz3eKmHa7cpchmp75UTx5kcBqsSoiI49Kl6TzaextH8BTYds56I_NgKdAJ_ShILvobmGZWAe9-AD-Dc5vdwxvLXIxM9ZszPQ-_1UYCifH71EBpaRqC8-N9YfG8AvivjxbEz-dHZPBiiQaJqehi7C3hXRkniPrPUVjjc6u0qjWeYFN6cE_fZZE7RKulOMDs8e4D9WtYtpG5Q1tdSwSq3PMOsihWZcxEn5ZgHX-fzWFww')"></div>
+<div class="absolute inset-0 bg-primary/10 backdrop-overlay"></div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest py-section-gap border-t border-outline-variant/30">
+<div class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="col-span-1 md:col-span-1">
+<a class="font-display-lg text-headline-md font-bold text-primary mb-6 block" href="#">UsedCar.id</a>
+<p class="text-on-surface-variant text-body-md pr-8">
+                    Redefining the pre-owned vehicle marketplace with transparency and technology.
+                </p>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="font-label-bold text-label-bold text-on-surface">Quick Links</h5>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-body-md" href="#">About Us</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-body-md" href="#">Buyer Guide</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-body-md" href="#">Seller Center</a>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="font-label-bold text-label-bold text-on-surface">Legal</h5>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-body-md" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-body-md" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-body-md" href="#">Cookie Policy</a>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="font-label-bold text-label-bold text-on-surface">Newsletter</h5>
+<p class="text-on-surface-variant text-sm mb-2">Get the latest stock updates.</p>
+<div class="flex gap-2">
+<input class="bg-surface-container border-none rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-primary w-full" placeholder="Email address" type="email"/>
+<button class="bg-primary text-on-primary p-2 rounded-lg">
+<span class="material-symbols-outlined text-sm">send</span>
+</button>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-desktop mt-16 pt-8 border-t border-outline-variant/10 text-center">
+<p class="text-on-surface-variant text-label-bold">© 2024 UsedCar.id. Premium Marketplace for Certified Pre-owned Vehicles.</p>
+</div>
+</footer>
+<!-- Micro-interaction Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Subtle parallax/float effect for cards
+            const cards = document.querySelectorAll('.glass-card');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (y - centerY) / 20;
+                    const rotateY = (centerX - x) / 20;
+                    
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
+                });
+            });
+
+            // Smooth scroll for anchors
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body></html>

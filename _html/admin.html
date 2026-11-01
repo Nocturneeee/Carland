@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>UsedCar.id | Admin Inventory Management</title>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"tertiary-fixed": "#ffdcc3", background: "#f7f9ff", "secondary-fixed": "#cfe5ff", "inverse-on-surface": "#edf1f9", surface: "#f7f9ff", "on-primary-container": "#003253", "on-tertiary-fixed": "#2f1500", "on-surface": "#171c21", "on-surface-variant": "#3f4852", "primary-fixed": "#cfe5ff", "on-error-container": "#93000a", "on-background": "#171c21", "surface-tint": "#00629d", "on-secondary-fixed-variant": "#24496b", "surface-container-high": "#e4e8f0", "surface-container-highest": "#dfe3ea", "on-primary": "#ffffff", "error-container": "#ffdad6", tertiary: "#914d00", "secondary-fixed-dim": "#a6caf1", "surface-container-low": "#f0f4fc", error: "#ba1a1a", "surface-container": "#eaeef6", "outline-variant": "#bec7d4", "inverse-primary": "#99cbff", outline: "#6f7883", "on-secondary-fixed": "#001d34", "on-secondary-container": "#395c7f", "on-error": "#ffffff", "surface-variant": "#dfe3ea", "on-secondary": "#ffffff", primary: "#00629d", "on-primary-fixed": "#001d34", "on-tertiary-container": "#4b2500", "on-primary-fixed-variant": "#004a78", "surface-container-lowest": "#ffffff", "tertiary-fixed-dim": "#ffb77d", secondary: "#3e6184", "on-tertiary": "#ffffff", "secondary-container": "#b1d5fd", "on-tertiary-fixed-variant": "#6e3900", "primary-fixed-dim": "#99cbff", "primary-container": "#029df7", "surface-dim": "#d6dae2", "inverse-surface": "#2c3137", "tertiary-container": "#e37c02", "surface-bright": "#f7f9ff"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}, spacing: {"margin-desktop": "64px", "container-max": "1280px", "margin-mobile": "20px", "element-gap": "16px", "section-gap": "120px", gutter: "24px"}, fontFamily: {"display-lg": ["Plus Jakarta Sans"], "label-bold": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Plus Jakarta Sans"], headline: ["Plus Jakarta Sans"], display: ["Plus Jakarta Sans"], body: ["Plus Jakarta Sans"], label: ["Plus Jakarta Sans"]}, fontSize: {"display-lg": ["64px", {lineHeight: "1.1", letterSpacing: "-0.04em", fontWeight: "800"}], "label-bold": ["14px", {lineHeight: "1.4", letterSpacing: "0.05em", fontWeight: "600"}], "body-md": ["16px", {lineHeight: "1.6", fontWeight: "400"}], "headline-md": ["24px", {lineHeight: "1.3", fontWeight: "700"}], "body-lg": ["18px", {lineHeight: "1.6", fontWeight: "400"}], "headline-lg": ["40px", {lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "700"}], "headline-lg-mobile": ["32px", {lineHeight: "1.2", fontWeight: "700"}]}}}};</script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-mesh {
+            background-color: #f7f9fb;
+            background-image: radial-gradient(at 0% 0%, rgba(0, 163, 255, 0.05) 0px, transparent 50%),
+                              radial-gradient(at 100% 0%, rgba(0, 98, 157, 0.05) 0px, transparent 50%),
+                              radial-gradient(at 100% 100%, rgba(0, 180, 82, 0.03) 0px, transparent 50%);
+        }
+        .active-nav-border {
+            position: relative;
+        }
+        .active-nav-border::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #00629d;
+        }
+    </style>
+</head>
+<body class="bg-mesh min-h-screen font-body-md text-on-surface">
+<!-- TopNavBar Component -->
+<header class="bg-surface/70 backdrop-blur-xl docked full-width top-0 sticky z-50 shadow-sm border-b border-white/10">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto h-20">
+<div class="flex items-center gap-12">
+<a class="font-display-lg text-headline-md font-extrabold text-primary tracking-tight" href="#">UsedCar.id</a>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-bold text-label-bold" href="#">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-bold text-label-bold" href="#">Catalog</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-bold text-label-bold" href="#">Contact</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-4 py-2 bg-primary-container/10 rounded-full">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
+<span class="font-label-bold text-label-bold text-primary">Admin Login</span>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin-desktop py-12 flex flex-col md:flex-row gap-gutter">
+<!-- Sidebar Sub-Nav -->
+<aside class="w-full md:w-64 flex-shrink-0">
+<div class="glass-card rounded-xl p-6 shadow-sm sticky top-32">
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-primary-container/10 transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-bold text-label-bold">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary-container text-on-primary font-bold shadow-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="font-label-bold text-label-bold">Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-primary-container/10 transition-all" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-bold text-label-bold">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-primary-container/10 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-bold text-label-bold">Settings</span>
+</a>
+</nav>
+</div>
+</aside>
+<!-- Main Content Area -->
+<section class="flex-grow">
+<!-- Header Actions -->
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Vehicle Inventory</h1>
+<p class="text-on-surface-variant">Manage and update your premium car listings.</p>
+</div>
+<button class="bg-primary text-on-primary px-6 py-3 rounded-full font-label-bold text-label-bold flex items-center gap-2 shadow-lg hover:translate-y-[-2px] transition-all active:scale-95" onclick="document.getElementById('addModal').classList.remove('hidden')">
+<span class="material-symbols-outlined">add_circle</span>
+                    Add New Car
+                </button>
+</div>
+<!-- Stats Bar -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="glass-card p-6 rounded-xl shadow-sm border border-white/20">
+<p class="text-on-surface-variant font-label-bold text-label-bold mb-1">Total Stock</p>
+<p class="font-display-lg text-headline-lg text-primary">124</p>
+</div>
+<div class="glass-card p-6 rounded-xl shadow-sm border border-white/20">
+<p class="text-on-surface-variant font-label-bold text-label-bold mb-1">Available Now</p>
+<p class="font-display-lg text-headline-lg text-tertiary">86</p>
+</div>
+<div class="glass-card p-6 rounded-xl shadow-sm border border-white/20">
+<p class="text-on-surface-variant font-label-bold text-label-bold mb-1">Sold this month</p>
+<p class="font-display-lg text-headline-lg text-secondary">38</p>
+</div>
+</div>
+<!-- Inventory Table -->
+<div class="glass-card rounded-xl shadow-sm overflow-hidden border border-white/20">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant/30">
+<tr>
+<th class="px-6 py-4 font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Image</th>
+<th class="px-6 py-4 font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Vehicle Name</th>
+<th class="px-6 py-4 font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider text-right">Price (IDR)</th>
+<th class="px-6 py-4 font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="px-6 py-4 font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider text-center">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20">
+<!-- Row 1 -->
+<tr class="hover:bg-primary-container/5 transition-colors group">
+<td class="px-6 py-4">
+<div class="w-20 h-14 rounded-lg overflow-hidden bg-surface-container shadow-inner">
+<img class="w-full h-full object-cover" data-alt="A side view profile of a metallic silver 2023 BMW M4 parked in a high-tech showroom with soft blue studio lighting and floor reflections. The scene is incredibly clean and modern, following a futuristic luxury aesthetic with glass and steel elements." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOd031upVK5bK7AGAAWPYV-XdetcaB_eDrEKomTzDKhz_k-0gZgKNiO72KWNvwWKAJakQwA-cw-Sis2ZEO1p_VGlR8vO2ZL809vbBZciNtVvvHjaioOgg3-hg7hRGm-T-ytGS60Emsfv3hbue4I7OAQVR7Tlv7G8krisE6Z8Pp8MBJB6CmlT6rSGpPsJ05RtigYWDSdRs_XKP1GAqP4m_gP6Bw5dEYgLPIfsfw9g__wnbKK6HVIQXIQpe4sDyAbApO8mh1Rzo5BQ"/>
+</div>
+</td>
+<td class="px-6 py-4">
+<p class="font-label-bold text-label-bold text-on-surface">2023 BMW M4 Competition</p>
+<p class="text-xs text-on-surface-variant">VIN: 1234567890ABC</p>
+</td>
+<td class="px-6 py-4 text-right">
+<p class="font-label-bold text-on-surface">2.450.000.000</p>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-tertiary-container/20 text-tertiary text-xs font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary mr-2"></span>
+                                        Available
+                                    </span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center justify-center gap-2">
+<button class="p-2 text-on-surface-variant hover:text-primary hover:bg-primary-container/20 rounded-full transition-all">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-error hover:bg-error-container/20 rounded-full transition-all">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-primary-container/5 transition-colors group">
+<td class="px-6 py-4">
+<div class="w-20 h-14 rounded-lg overflow-hidden bg-surface-container shadow-inner">
+<img class="w-full h-full object-cover" data-alt="A front view of a sleek black 2022 Porsche 911 Carrera on a minimalist white platform. Soft ambient blue lighting accents the curves of the car. High-end editorial photography style with deep shadows and vibrant sky-blue highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDleqFZASecQ9rPPN0JBuV2uVxSEu3BmzyBUGUTQwb5WQec1QpN9D7Un2ZcmhDUcJV7MXct-5JQF4nqUckCptKcCvlUKdl_I0HcMS6vE12W4vL7rx9dYmLzE9uG1qE_2tiiKhAqwJLTLmCRLhjWp9sVm2udIEbmhYrCW_K-L90VofVJP4-BZmobp2duKGe01145pt-VeVJuQjlYpvSdragTex1Ima12UCJmVjCZiilZRnOUNcgi_rgMnXLTX58HaRR5TPnbWZ5HfQ"/>
+</div>
+</td>
+<td class="px-6 py-4">
+<p class="font-label-bold text-label-bold text-on-surface">2022 Porsche 911 Carrera</p>
+<p class="text-xs text-on-surface-variant">VIN: 9876543210XYZ</p>
+</td>
+<td class="px-6 py-4 text-right">
+<p class="font-label-bold text-on-surface">4.100.000.000</p>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-secondary-container/50 text-secondary text-xs font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary mr-2"></span>
+                                        Sold
+                                    </span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center justify-center gap-2">
+<button class="p-2 text-on-surface-variant hover:text-primary hover:bg-primary-container/20 rounded-full transition-all">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-error hover:bg-error-container/20 rounded-full transition-all">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-primary-container/5 transition-colors group">
+<td class="px-6 py-4">
+<div class="w-20 h-14 rounded-lg overflow-hidden bg-surface-container shadow-inner">
+<img class="w-full h-full object-cover" data-alt="A modern electric car, a 2024 Tesla Model S in pearl white, showcasing its aerodynamic design in a futuristic glass-enclosed showroom. The environment is filled with soft, glowing blue mesh patterns on the floor and walls, creating a high-tech atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKqqi8xO8s18dzXLfYcGaFzqhe4DvioEnK9pqvgks7AqywFQl0pGDJSfnAJcN7b8v8aVr0LAtycj00jdxd1lequZHRD_W405jr6bkTLo7Wp-zxZLM5Tuk2wbp0BKaMt2gf9plk1BauHceoRFUl40B4l29Ti0J8ulowjOrF0qkqR_WK0aC_2-uinzx9wWJvlf5KvKymmA504Am4swpkjNtQsQqIb17IliNoO1_7aZk7VxwIscnRqZZzgzUpOKrJ4cryeAEkoZA5_g"/>
+</div>
+</td>
+<td class="px-6 py-4">
+<p class="font-label-bold text-label-bold text-on-surface">2024 Tesla Model S Plaid</p>
+<p class="text-xs text-on-surface-variant">VIN: EV123456789PL</p>
+</td>
+<td class="px-6 py-4 text-right">
+<p class="font-label-bold text-on-surface">3.200.000.000</p>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-tertiary-container/20 text-tertiary text-xs font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary mr-2"></span>
+                                        Available
+                                    </span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center justify-center gap-2">
+<button class="p-2 text-on-surface-variant hover:text-primary hover:bg-primary-container/20 rounded-full transition-all">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-error hover:bg-error-container/20 rounded-full transition-all">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-4 bg-surface-container-lowest border-t border-outline-variant/30 flex justify-between items-center">
+<p class="text-on-surface-variant text-sm">Showing 1 to 3 of 124 cars</p>
+<div class="flex gap-2">
+<button class="p-2 rounded-lg border border-outline-variant/30 hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="p-2 rounded-lg border border-outline-variant/30 bg-primary text-on-primary shadow-sm font-label-bold">1</button>
+<button class="p-2 rounded-lg border border-outline-variant/30 hover:bg-surface-container transition-all font-label-bold">2</button>
+<button class="p-2 rounded-lg border border-outline-variant/30 hover:bg-surface-container transition-all font-label-bold">3</button>
+<button class="p-2 rounded-lg border border-outline-variant/30 hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Component -->
+<footer class="bg-surface-container-lowest dark:bg-surface-dim full-width py-section-gap border-t border-outline-variant/30 mt-section-gap">
+<div class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="col-span-1 md:col-span-2">
+<h2 class="font-display-lg text-headline-md font-bold text-primary mb-4">UsedCar.id</h2>
+<p class="text-on-surface-variant max-w-sm mb-6">© 2024 UsedCar.id. Premium Marketplace for Certified Pre-owned Vehicles. Driving the future of automotive luxury.</p>
+</div>
+<div>
+<h4 class="font-label-bold text-label-bold text-on-surface uppercase mb-4">Marketplace</h4>
+<nav class="flex flex-col gap-3">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">About Us</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Buyer Guide</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Seller Center</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Privacy Policy</a>
+</nav>
+</div>
+<div>
+<h4 class="font-label-bold text-label-bold text-on-surface uppercase mb-4">Connect</h4>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all" href="#">
+<span class="material-symbols-outlined">alternate_email</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all" href="#">
+<span class="material-symbols-outlined">forum</span>
+</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- Add New Car Modal (Hidden by Default) -->
+<div class="hidden fixed inset-0 z-[100] flex items-center justify-center px-4" id="addModal">
+<div class="absolute inset-0 bg-on-surface/40 backdrop-blur-md" onclick="document.getElementById('addModal').classList.add('hidden')"></div>
+<div class="relative glass-card w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden border border-white/40">
+<div class="px-8 py-6 border-b border-outline-variant/20 flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-on-surface">Add New Inventory</h3>
+<button class="text-on-surface-variant hover:text-primary transition-all" onclick="document.getElementById('addModal').classList.add('hidden')">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<form class="p-8 space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-bold text-label-bold text-on-surface-variant">Car Model Name</label>
+<input class="w-full bg-surface-container/50 border-outline-variant/30 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none" placeholder="e.g. BMW M4" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-bold text-label-bold text-on-surface-variant">Year</label>
+<input class="w-full bg-surface-container/50 border-outline-variant/30 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none" placeholder="2024" type="number"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-bold text-label-bold text-on-surface-variant">Price (IDR)</label>
+<input class="w-full bg-surface-container/50 border-outline-variant/30 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none" placeholder="2.500.000.000" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-bold text-label-bold text-on-surface-variant">Status</label>
+<select class="w-full bg-surface-container/50 border-outline-variant/30 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none appearance-none">
+<option>Available</option>
+<option>Reserved</option>
+<option>Sold</option>
+</select>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-bold text-label-bold text-on-surface-variant">Upload Vehicle Photos</label>
+<div class="w-full h-32 border-2 border-dashed border-outline-variant/40 rounded-xl flex flex-col items-center justify-center bg-surface-container/20 group hover:bg-primary-container/5 hover:border-primary transition-all cursor-pointer">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-all mb-2">cloud_upload</span>
+<p class="text-sm text-on-surface-variant">Drag and drop or click to upload</p>
+</div>
+</div>
+<div class="flex justify-end gap-4 mt-8">
+<button class="px-6 py-3 rounded-full font-label-bold text-on-surface-variant hover:bg-surface-container transition-all" onclick="document.getElementById('addModal').classList.add('hidden')" type="button">Cancel</button>
+<button class="bg-primary text-on-primary px-8 py-3 rounded-full font-label-bold shadow-lg shadow-primary/20 hover:scale-[1.02] transition-all" type="submit">Save Vehicle</button>
+</div>
+</form>
+</div>
+</div>
+<!-- WhatsApp FAB -->
+<a class="fixed bottom-10 right-10 z-[60] bg-[#25D366] text-white p-4 rounded-full shadow-2xl flex items-center gap-3 hover:scale-110 transition-transform group" href="https://wa.me/yournumber">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat</span>
+<span class="font-label-bold text-label-bold pr-2 max-w-0 group-hover:max-w-xs overflow-hidden transition-all duration-500 whitespace-nowrap">Chat with Support</span>
+</a>
+<script>
+        // Simple Micro-interaction for table rows
+        document.querySelectorAll('tr').forEach(row => {
+            row.addEventListener('click', () => {
+                // Potential detail expansion logic
+            });
+        });
+
+        // Closing modal on escape key
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.getElementById('addModal').classList.add('hidden');
+            }
+        });
+    </script>
+</body></html>

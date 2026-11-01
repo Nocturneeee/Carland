@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>UsedCar.id | Premium Certified Pre-owned Vehicles</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"tertiary-fixed": "#ffdcc3", background: "#f7f9ff", "secondary-fixed": "#cfe5ff", "inverse-on-surface": "#edf1f9", surface: "#f7f9ff", "on-primary-container": "#003253", "on-tertiary-fixed": "#2f1500", "on-surface": "#171c21", "on-surface-variant": "#3f4852", "primary-fixed": "#cfe5ff", "on-error-container": "#93000a", "on-background": "#171c21", "surface-tint": "#00629d", "on-secondary-fixed-variant": "#24496b", "surface-container-high": "#e4e8f0", "surface-container-highest": "#dfe3ea", "on-primary": "#ffffff", "error-container": "#ffdad6", tertiary: "#914d00", "secondary-fixed-dim": "#a6caf1", "surface-container-low": "#f0f4fc", error: "#ba1a1a", "surface-container": "#eaeef6", "outline-variant": "#bec7d4", "inverse-primary": "#99cbff", outline: "#6f7883", "on-secondary-fixed": "#001d34", "on-secondary-container": "#395c7f", "on-error": "#ffffff", "surface-variant": "#dfe3ea", "on-secondary": "#ffffff", primary: "#00629d", "on-primary-fixed": "#001d34", "on-tertiary-container": "#4b2500", "on-primary-fixed-variant": "#004a78", "surface-container-lowest": "#ffffff", "tertiary-fixed-dim": "#ffb77d", secondary: "#3e6184", "on-tertiary": "#ffffff", "secondary-container": "#b1d5fd", "on-tertiary-fixed-variant": "#6e3900", "primary-fixed-dim": "#99cbff", "primary-container": "#029df7", "surface-dim": "#d6dae2", "inverse-surface": "#2c3137", "tertiary-container": "#e37c02", "surface-bright": "#f7f9ff"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}, spacing: {"margin-desktop": "64px", "container-max": "1280px", "margin-mobile": "20px", "element-gap": "16px", "section-gap": "120px", gutter: "24px"}, fontFamily: {"display-lg": ["Plus Jakarta Sans"], "label-bold": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Plus Jakarta Sans"], headline: ["Plus Jakarta Sans"], display: ["Plus Jakarta Sans"], body: ["Plus Jakarta Sans"], label: ["Plus Jakarta Sans"]}, fontSize: {"display-lg": ["64px", {lineHeight: "1.1", letterSpacing: "-0.04em", fontWeight: "800"}], "label-bold": ["14px", {lineHeight: "1.4", letterSpacing: "0.05em", fontWeight: "600"}], "body-md": ["16px", {lineHeight: "1.6", fontWeight: "400"}], "headline-md": ["24px", {lineHeight: "1.3", fontWeight: "700"}], "body-lg": ["18px", {lineHeight: "1.6", fontWeight: "400"}], "headline-lg": ["40px", {lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "700"}], "headline-lg-mobile": ["32px", {lineHeight: "1.2", fontWeight: "700"}]}}}};</script>
+<style>
+        .mesh-gradient {
+            background: radial-gradient(at 0% 0%, #cfe5ff 0%, transparent 50%),
+                        radial-gradient(at 100% 0%, #00a3ff 0%, transparent 50%),
+                        radial-gradient(at 50% 100%, #ffffff 0%, transparent 50%);
+            background-color: #f7f9fb;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+        }
+        .glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 25px 50px rgba(0, 98, 157, 0.1);
+            transition: all 0.3s ease;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .floating-anim {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<header class="bg-surface/70 dark:bg-surface/70 backdrop-blur-xl docked full-width top-0 sticky z-50 border-b border-white/10 dark:border-white/5 shadow-sm h-20 flex items-center">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto">
+<div class="flex items-center gap-8">
+<a class="font-display-lg text-headline-md font-extrabold text-primary dark:text-primary-fixed-dim tracking-tight" href="#">UsedCar.id</a>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-primary dark:text-primary-fixed-dim font-bold border-b-2 border-primary pb-1 font-label-bold text-label-bold" href="#">Home</a>
+<a class="text-on-surface-variant dark:text-on-surface hover:text-primary transition-colors font-label-bold text-label-bold" href="#">Catalog</a>
+<a class="text-on-surface-variant dark:text-on-surface hover:text-primary transition-colors font-label-bold text-label-bold" href="#">Contact</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:block font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors">Admin Login</button>
+<div class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-primary-container/10 transition-all duration-300 active:scale-95">
+<span class="material-symbols-outlined text-primary">admin_panel_settings</span>
+</div>
+</div>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex items-center overflow-hidden mesh-gradient pt-20">
+<!-- Animated Background Shader -->
+<div class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-gutter items-center relative z-10">
+<div class="space-y-8">
+<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border-primary/20">
+<span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span>
+<span class="font-label-bold text-label-bold text-primary">New Inventory Arriving Daily</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface leading-tight">
+                        The Smartest Way to Own Your <span class="text-primary-container">Dream Car</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
+                        Premium certified pre-owned vehicles with futuristic reliability. Experience the next generation of car buying today.
+                    </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="px-8 py-4 bg-primary text-on-primary font-label-bold text-label-bold rounded-xl shadow-lg hover:bg-primary/90 transition-all active:scale-95 flex items-center gap-2">
+                            Explore Catalog
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<button class="px-8 py-4 glass-card font-label-bold text-label-bold rounded-xl hover:bg-white/50 transition-all active:scale-95 flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-[20px]">play_circle</span>
+                            How it works
+                        </button>
+</div>
+</div>
+<!-- Hero Floating Cards Visuals -->
+<div class="relative h-[600px] hidden lg:block">
+<!-- Main Hero Image Overlayed with Glass Cards -->
+<div class="absolute inset-0 rounded-3xl overflow-hidden shadow-2xl transform rotate-3 scale-105 border border-white/20">
+<img class="w-full h-full object-cover" data-alt="A futuristic, sleek silver high-end sports car parked in a minimalist, bright white showroom with expansive glass walls and soft sky-blue lighting. The atmosphere is professional, airy, and high-tech, reflecting a premium automotive marketplace aesthetic. High-key lighting highlights the car's reflective surfaces and modern design language." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxqlboInAGaUX_yGMuwdK_Q67cEIamgvktuM8jQVeHCi47vU1GmnCXKVcNp8EJrRxyM-Ma61Q9f8pd6WOijco_wW7WgCLUt9BZM1Tb3nI6lbIsvhTLE5j-2BUzvcbLx6XTBz7jdlTmEv4Gu6NPaAPJpgyPX8uGbdld6RonbEoC6faraiAKsHJkU0Xusbn5Tgi-K0mMB8ZhfXYV4HmuFPjhr-SgmsZ7PKCPggnAN75k54SeG5-YopcuOelxFK5v1PYyj4ithW7Ziw"/>
+</div>
+<!-- Glassmorphic Info Cards -->
+<div class="absolute top-10 -left-10 glass-card p-6 rounded-2xl w-56 floating-anim" style="animation-delay: 0.2s">
+<div class="w-12 h-12 bg-primary-container/20 rounded-xl flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary">verified</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">0%</h3>
+<p class="font-label-bold text-label-bold text-on-surface-variant">Downpayment</p>
+</div>
+<div class="absolute bottom-20 -right-10 glass-card p-6 rounded-2xl w-64 floating-anim" style="animation-delay: 0.5s">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-10 h-10 bg-tertiary-container/20 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary">check_circle</span>
+</div>
+<span class="font-label-bold text-label-bold text-on-surface">Certified Engine</span>
+</div>
+<div class="h-2 w-full bg-outline-variant/30 rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container w-[95%]"></div>
+</div>
+<p class="mt-2 text-xs text-on-surface-variant font-label-bold">Inspection Score: 95/100</p>
+</div>
+<div class="absolute top-1/2 -left-20 glass-card p-4 rounded-xl flex items-center gap-3 floating-anim" style="animation-delay: 0.8s">
+<div class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[16px]">bolt</span>
+</div>
+<span class="font-label-bold text-label-bold text-on-surface">Instant Approval</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Section -->
+<section class="py-section-gap bg-surface overflow-hidden">
+<div class="max-w-container-max mx-auto px-margin-desktop mb-12 flex justify-between items-end">
+<div class="space-y-4">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Featured Collections</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Our hand-picked selection of high-performance luxury vehicles.</p>
+</div>
+<div class="flex gap-4">
+<button class="w-12 h-12 rounded-full border border-outline flex items-center justify-center hover:bg-primary-container/10 transition-all">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center hover:bg-primary/90 transition-all shadow-md">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="flex gap-gutter px-margin-desktop overflow-x-auto hide-scrollbar snap-x pb-12">
+<!-- Tesla Card -->
+<div class="min-w-[380px] snap-center glass-card rounded-3xl group">
+<div class="relative h-64 rounded-t-3xl overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A pristine white Tesla Model 3 driving through a clean, modern urban landscape at dusk. Soft blue and purple ambient lights from city buildings reflect off the car's minimalist exterior. The shot is high-end, focusing on the sleek aerodynamics and sophisticated electric vehicle design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfh3YIhkVUeTP1oWV8gqbeXXqTQ-XOxfTpkVMOHBdOy6clNhbpvl221m3R876GjoJxmscY4cNruMvw3ekabx-Mb6D0CjtLIVk7Na5oOsOQ1kpPjqeJtf6rm7pdrVa-xv48KFhyEq0V1sEXHukD-3E84aklyFV8ZDmvX-5RGT_euXiyd3afoRZ25gyXWfUcUb7JUjrQZIxMe8U_YACIqgT99RhsJwHegeYNRExKQ2CVvh-F_YQrGrWGbuvD56g-H-DFQ349qo8kCg"/>
+<div class="absolute top-4 left-4 glass-card px-3 py-1 rounded-full text-xs font-bold text-primary">Certified</div>
+</div>
+<div class="p-6 space-y-4">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Tesla Model 3 Performance</h3>
+<p class="text-on-surface-variant font-label-bold">2022 • Dual Motor AWD</p>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<div class="p-2 bg-primary-container/10 rounded-lg text-center">
+<span class="block text-xs font-label-bold text-primary uppercase">Range</span>
+<span class="font-bold text-on-surface">547 km</span>
+</div>
+<div class="p-2 bg-primary-container/10 rounded-lg text-center">
+<span class="block text-xs font-label-bold text-primary uppercase">0-100</span>
+<span class="font-bold text-on-surface">3.3s</span>
+</div>
+<div class="p-2 bg-primary-container/10 rounded-lg text-center">
+<span class="block text-xs font-label-bold text-primary uppercase">Mileage</span>
+<span class="font-bold text-on-surface">12k km</span>
+</div>
+</div>
+<div class="flex justify-between items-center pt-2">
+<span class="text-primary font-display-lg text-headline-md">Rp 850.000.000</span>
+<button class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center hover:bg-primary-container transition-all">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+</div>
+</div>
+<!-- BMW Card -->
+<div class="min-w-[380px] snap-center glass-card rounded-3xl group">
+<div class="relative h-64 rounded-t-3xl overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A matte grey BMW M4 Competition parked against a minimalist architectural background with sharp shadows and bright daylight. The vehicle's aggressive front grille and high-performance wheels are emphasized. The overall style is clean, editorial, and sophisticated." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVtil5OZIilBz5wr-mKWeo1Y1FO2e0phhyWzvoiH9gD0up53Onw6KMC78cFjMQs2xv0mIsXgqj1uh7aV_vMP7G8VgHeweNLsdPVbFoLah1J8zcmJUqSkkfBfNGV4MV09SE3qLhQH6a8c3EVfjGN070Z7SNoWsUSckTjaCtbZG6huoh1_fwxaBf0C28IZ5zZdXOYY6VJaOoK0VIY5kXjL6cO3VjZxW6233aGRdoSbvJqdtpX_dixdsjbPnUFYnzatcyTGIz0vQnBQ"/>
+<div class="absolute top-4 left-4 glass-card px-3 py-1 rounded-full text-xs font-bold text-primary">Premium Plus</div>
+</div>
+<div class="p-6 space-y-4">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">BMW M4 Competition</h3>
+<p class="text-on-surface-variant font-label-bold">2021 • M xDrive</p>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<div class="p-2 bg-primary-container/10 rounded-lg text-center">
+<span class="block text-xs font-label-bold text-primary uppercase">Power</span>
+<span class="font-bold text-on-surface">510 hp</span>
+</div>
+<div class="p-2 bg-primary-container/10 rounded-lg text-center">
+<span class="block text-xs font-label-bold text-primary uppercase">Engine</span>
+<span class="font-bold text-on-surface">3.0L L6</span>
+</div>
+<div class="p-2 bg-primary-container/10 rounded-lg text-center">
+<span class="block text-xs font-label-bold text-primary uppercase">Mileage</span>
+<span class="font-bold text-on-surface">8k km</span>
+</div>
+</div>
+<div class="flex justify-between items-center pt-2">
+<span class="text-primary font-display-lg text-headline-md">Rp 2.150.000.000</span>
+<button class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center hover:bg-primary-container transition-all">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Audi Card -->
+<div class="min-w-[380px] snap-center glass-card rounded-3xl group">
+<div class="relative h-64 rounded-t-3xl overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="An Audi RS6 Avant in metallic blue parked in a modern, light-filled garage with polished concrete floors. The car's muscular stance and signature RS details are highlighted. The image is bright, professional, and reflects a sense of high-performance utility." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRlooeur3Sa6JVezbVGBUlIjYqfGy5z4BxqUyCzikqahNjper8hJeMs4oU6xxurn-_-ojDTgXnvg1yawYxljJjRxXkPCW8PDKopYzkOQumkERG-Hw4Gtuy9Z7fcoRnuc9eiPYSlumrVsvhJVY3_ssYBD9oJqUMrxtRnzSGugiYBTuGPyjOkHugkkVEsUuumcAt82_StIUH27W15NJi7E1dwDPdCgeIcGNAkH10Bz7m4MwOHlkUA6Hd0eQ4SoiR-lvgWs58VIiItQ"/>
+<div class="absolute top-4 left-4 glass-card px-3 py-1 rounded-full text-xs font-bold text-primary">New Arrival</div>
+</div>
+<div class="p-6 space-y-4">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Audi RS6 Avant</h3>
+<p class="text-on-surface-variant font-label-bold">2023 • Quattro</p>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<div class="p-2 bg-primary-container/10 rounded-lg text-center">
+<span class="block text-xs font-label-bold text-primary uppercase">Torque</span>
+<span class="font-bold text-on-surface">800 Nm</span>
+</div>
+<div class="p-2 bg-primary-container/10 rounded-lg text-center">
+<span class="block text-xs font-label-bold text-primary uppercase">Seats</span>
+<span class="font-bold text-on-surface">5 Adults</span>
+</div>
+<div class="p-2 bg-primary-container/10 rounded-lg text-center">
+<span class="block text-xs font-label-bold text-primary uppercase">Mileage</span>
+<span class="font-bold text-on-surface">3k km</span>
+</div>
+</div>
+<div class="flex justify-between items-center pt-2">
+<span class="text-primary font-display-lg text-headline-md">Rp 3.850.000.000</span>
+<button class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center hover:bg-primary-container transition-all">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Trust Section - Glassmorphic Features -->
+<section class="py-section-gap relative overflow-hidden bg-background">
+<div class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-3 gap-gutter relative z-10">
+<div class="glass-card p-10 rounded-3xl text-center flex flex-col items-center">
+<div class="w-20 h-20 rounded-2xl bg-primary/10 flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-primary text-[40px]" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">150+ Points Inspection</h3>
+<p class="text-on-surface-variant">Every vehicle undergoes a rigorous 150-point technical and aesthetic inspection by our certified engineers.</p>
+</div>
+<div class="glass-card p-10 rounded-3xl text-center flex flex-col items-center">
+<div class="w-20 h-20 rounded-2xl bg-tertiary-container/10 flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-tertiary text-[40px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">1-Year Warranty</h3>
+<p class="text-on-surface-variant">Drive with peace of mind. All our certified cars come with a comprehensive 1-year powertrain warranty.</p>
+</div>
+<div class="glass-card p-10 rounded-3xl text-center flex flex-col items-center">
+<div class="w-20 h-20 rounded-2xl bg-secondary-container/20 flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-secondary text-[40px]" style="font-variation-settings: 'FILL' 1;">history</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">Verified History</h3>
+<p class="text-on-surface-variant">Full service history and accident-free verification report provided for every car in our inventory.</p>
+</div>
+</div>
+</section>
+<!-- CTA Section with WhatsApp -->
+<section class="py-section-gap px-margin-desktop">
+<div class="max-w-container-max mx-auto glass-card rounded-[40px] p-12 md:p-20 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-12 bg-primary">
+<!-- Background visual -->
+<div class="absolute inset-0 opacity-20 pointer-events-none">
+</div>
+<div class="relative z-10 space-y-6 md:max-w-2xl text-on-primary">
+<h2 class="font-display-lg text-headline-lg text-white">Found your match? Let's chat.</h2>
+<p class="font-body-lg text-body-lg text-white/80">
+                        Our personal concierge is ready to help you with trade-ins, financing, or scheduling a private test drive at your location.
+                    </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="px-8 py-4 bg-[#25D366] text-white font-label-bold text-label-bold rounded-xl shadow-lg hover:brightness-110 transition-all flex items-center gap-3">
+<svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.484 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.309 1.656zm6.224-3.82s.181.106.512.285c1.44.78 3.067 1.193 4.741 1.194 5.588 0 10.138-4.55 10.14-10.137.002-2.707-1.054-5.251-2.973-7.17-1.917-1.917-4.461-2.971-7.168-2.971-5.588 0-10.14 4.551-10.142 10.139-.001 2.016.593 3.98 1.717 5.634l-.999 3.65 3.774-.99zm11.366-5.412c-.333-.167-1.97-.973-2.275-1.084-.305-.11-.527-.167-.749.167-.221.333-.859 1.084-1.054 1.306-.194.222-.389.25-.722.083-.333-.167-1.405-.518-2.675-1.651-.989-.882-1.657-1.971-1.851-2.306-.194-.333-.021-.514.145-.68.15-.149.333-.389.5-.583.167-.194.222-.333.333-.556.111-.222.056-.417-.028-.583-.083-.167-.749-1.806-1.026-2.473-.271-.652-.546-.564-.749-.574l-.639-.012c-.221 0-.583.083-.888.417-.305.333-1.165 1.139-1.165 2.778 0 1.639 1.193 3.222 1.36 3.444.167.222 2.348 3.585 5.69 5.028.794.344 1.415.549 1.899.704.8.254 1.528.218 2.103.132.641-.096 1.97-.805 2.248-1.583.278-.778.278-1.444.194-1.583-.083-.14-.305-.222-.638-.389z"></path></svg>
+                            Chat on WhatsApp
+                        </button>
+<button class="px-8 py-4 bg-white text-primary font-label-bold text-label-bold rounded-xl shadow-lg hover:bg-gray-50 transition-all">
+                            View Full Inventory
+                        </button>
+</div>
+</div>
+<div class="relative z-10 hidden lg:block">
+<div class="w-72 h-72 rounded-full border-4 border-white/20 p-4">
+<div class="w-full h-full rounded-full overflow-hidden border-8 border-white/10">
+<img class="w-full h-full object-cover" data-alt="A portrait of a professional and friendly automotive concierge specialist in a high-tech modern office. They are smiling warmly at the camera, wearing a clean, modern uniform. The lighting is bright and optimistic, with soft sky-blue accents in the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYlYMnYlDB0VOdq0UR8SI0CP39JZz5hC1MeDZax8-5_UJkN5rbKJG1SFiSPEgbl_HKUxSMHi5_-PfM3SFODHIw94B56RDGXtIeJLfwnkPSO3C6gpeqfMItwzcDWjGHlBcPHzxKl0KHXoOk3zGHPJ2LcSDecM0G-5wbkv-F8zEM3dFonLhRAQ7LEFn9iG6zSlFM2gy8KHHLxtChtWSwgICW9v8hzmTlUoF1AzT6ka-OD_MZtDoZrZmqbZL_PU65_0j4I6DNCMY5oQ"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-dim full-width py-section-gap border-t border-outline-variant/30">
+<div class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="col-span-1 md:col-span-1 space-y-6">
+<a class="font-display-lg text-headline-md font-bold text-primary dark:text-primary-fixed-dim" href="#">UsedCar.id</a>
+<p class="font-body-md text-body-md text-on-surface-variant">Premium Marketplace for Certified Pre-owned Vehicles.</p>
+</div>
+<div>
+<h4 class="font-label-bold text-label-bold text-on-surface mb-6 uppercase tracking-wider">Company</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant dark:text-on-surface hover:text-primary dark:hover:text-tertiary-fixed-dim transition-colors font-label-bold" href="#">About Us</a></li>
+<li><a class="text-on-surface-variant dark:text-on-surface hover:text-primary dark:hover:text-tertiary-fixed-dim transition-colors font-label-bold" href="#">Buyer Guide</a></li>
+<li><a class="text-on-surface-variant dark:text-on-surface hover:text-primary dark:hover:text-tertiary-fixed-dim transition-colors font-label-bold" href="#">Seller Center</a></li>
+<li><a class="text-on-surface-variant dark:text-on-surface hover:text-primary dark:hover:text-tertiary-fixed-dim transition-colors font-label-bold" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-bold text-label-bold text-on-surface mb-6 uppercase tracking-wider">Services</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant dark:text-on-surface hover:text-primary transition-colors font-label-bold" href="#">Financing Solutions</a></li>
+<li><a class="text-on-surface-variant dark:text-on-surface hover:text-primary transition-colors font-label-bold" href="#">Car Valuation</a></li>
+<li><a class="text-on-surface-variant dark:text-on-surface hover:text-primary transition-colors font-label-bold" href="#">Door-to-door Delivery</a></li>
+<li><a class="text-on-surface-variant dark:text-on-surface hover:text-primary transition-colors font-label-bold" href="#">Certified Inspections</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-bold text-label-bold text-on-surface mb-6 uppercase tracking-wider">Contact</h4>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<span class="text-on-surface-variant font-label-bold">SCBD, District 8, Jakarta Selatan</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">mail</span>
+<span class="text-on-surface-variant font-label-bold">contact@usedcar.id</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">call</span>
+<span class="text-on-surface-variant font-label-bold">+62 21 555 888</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-desktop mt-20 pt-8 border-t border-outline-variant/20 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-on-surface-variant text-sm font-label-bold">© 2024 UsedCar.id. Premium Marketplace for Certified Pre-owned Vehicles.</p>
+<div class="flex gap-6">
+<a class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">share</span>
+</a>
+<a class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">public</span>
+</a>
+</div>
+</div>
+</footer>
+<!-- Floating WhatsApp FAB for mobile/web -->
+<a class="fixed bottom-8 right-8 z-[100] w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform active:scale-95 group" href="https://wa.me/6221555888" target="_blank">
+<svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.484 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.309 1.656zm6.224-3.82s.181.106.512.285c1.44.78 3.067 1.193 4.741 1.194 5.588 0 10.138-4.55 10.14-10.137.002-2.707-1.054-5.251-2.973-7.17-1.917-1.917-4.461-2.971-7.168-2.971-5.588 0-10.14 4.551-10.142 10.139-.001 2.016.593 3.98 1.717 5.634l-.999 3.65 3.774-.99zm11.366-5.412c-.333-.167-1.97-.973-2.275-1.084-.305-.11-.527-.167-.749.167-.221.333-.859 1.084-1.054 1.306-.194.222-.389.25-.722.083-.333-.167-1.405-.518-2.675-1.651-.989-.882-1.657-1.971-1.851-2.306-.194-.333-.021-.514.145-.68.15-.149.333-.389.5-.583.167-.194.222-.333.333-.556.111-.222.056-.417-.028-.583-.083-.167-.749-1.806-1.026-2.473-.271-.652-.546-.564-.749-.574l-.639-.012c-.221 0-.583.083-.888.417-.305.333-1.165 1.139-1.165 2.778 0 1.639 1.193 3.222 1.36 3.444.167.222 2.348 3.585 5.69 5.028.794.344 1.415.549 1.899.704.8.254 1.528.218 2.103.132.641-.096 1.97-.805 2.248-1.583.278-.778.278-1.444.194-1.583-.083-.14-.305-.222-.638-.389z"></path></svg>
+<span class="absolute right-16 bg-surface px-4 py-2 rounded-lg shadow-xl text-primary font-bold text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Chat with us</span>
+</a>
+<script>
+        // Simple micro-interactions
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                // Potential JS driven enhancement if needed
+            });
+        });
+    </script>
+</body></html>
