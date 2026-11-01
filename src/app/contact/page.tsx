@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
+import WhatsAppFAB from "@/components/WhatsAppFAB";
 export default function Contact() {
   return (
     <>
@@ -186,6 +187,7 @@ export default function Contact() {
 <p className="text-on-surface-variant text-label-bold">© 2024 GarasiBoost. Premium Marketplace for Certified Pre-owned Vehicles.</p>
 </div>
 </footer>
+<WhatsAppFAB />
 {/*  Micro-interaction Script  */}
 
 

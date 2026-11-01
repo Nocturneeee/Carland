@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
+import WhatsAppFAB from "@/components/WhatsAppFAB";
 import { getAllVehicles, Vehicle } from "@/lib/vehicleStore";
 
 export default function Catalog() {
@@ -172,12 +173,8 @@ export default function Catalog() {
 </button>
 </div>
 </main>
-{/*  Floating WhatsApp FAB  */}
-<a className="fixed bottom-8 right-8 z-[60] bg-[#25D366] text-white p-4 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-90 transition-all duration-300 floating-element" href="#">
-<svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-<path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.025 3.312l-1.02 3.709 3.834-1.005c.944.512 1.956.784 2.929.784 3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.586-5.766-5.768-5.766zm3.444 8.212c-.145.408-.847.742-1.18.794-.333.051-.741.082-1.84-.332-1.428-.538-2.345-1.99-2.417-2.086-.072-.096-.583-.775-.583-1.49s.374-1.072.507-1.216c.133-.144.289-.18.386-.18.096 0 .193 0 .278.004.09.004.211-.034.331.253.12.289.41.999.446 1.072.036.073.06.157.012.253-.048.096-.072.156-.144.24-.073.085-.153.19-.22.253-.073.073-.148.153-.064.298.084.144.373.616.802 1 1.553 1.385 1.564.912 1.78 1.033.217.12.344.108.47-.036.126-.144.542-.63.687-.843.145-.213.29-.18.483-.108.193.072 1.229.578 1.446.687.217.108.361.168.415.26.054.09.054.524-.092.932z"></path>
-</svg>
-</a>
+{/* Floating WhatsApp FAB */}
+<WhatsAppFAB />
 {/*  Footer  */}
 <footer className="bg-surface-container-lowest border-t border-outline-variant/30 full-width py-section-gap">
 <div className="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter">

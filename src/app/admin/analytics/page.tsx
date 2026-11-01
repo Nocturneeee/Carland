@@ -1,3 +1,4 @@
+import WhatsAppFAB from "@/components/WhatsAppFAB";
 import Link from "next/link";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -55,14 +56,7 @@ export default async function AnalyticsPage() {
                 className="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-primary-container/10 transition-all"
                 href="/admin"
               >
-                <span className="material-symbols-outlined">dashboard</span>
-                <span className="font-label-bold text-label-bold">Dashboard</span>
-              </Link>
-              <Link
-                className="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-primary-container/10 transition-all"
-                href="/admin"
-              >
-                <span className="material-symbols-outlined">inventory_2</span>
+                <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>inventory_2</span>
                 <span className="font-label-bold text-label-bold">Inventory</span>
               </Link>
               <a className="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary-container text-on-primary font-bold shadow-md">
@@ -71,13 +65,6 @@ export default async function AnalyticsPage() {
                 </span>
                 <span className="font-label-bold text-label-bold">Analytics</span>
               </a>
-              <Link
-                className="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-primary-container/10 transition-all"
-                href="#"
-              >
-                <span className="material-symbols-outlined">settings</span>
-                <span className="font-label-bold text-label-bold">Settings</span>
-              </Link>
             </nav>
           </div>
         </aside>
@@ -127,14 +114,7 @@ export default async function AnalyticsPage() {
       </footer>
 
       {/* WhatsApp FAB */}
-      <a className="fixed bottom-10 right-10 z-[60] bg-[#25D366] text-white p-4 rounded-full shadow-2xl flex items-center gap-3 hover:scale-110 transition-transform group" href="https://wa.me/yournumber">
-        <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>
-          chat
-        </span>
-        <span className="font-label-bold text-label-bold pr-2 max-w-0 group-hover:max-w-xs overflow-hidden transition-all duration-500 whitespace-nowrap">
-          Chat with Support
-        </span>
-      </a>
+      <WhatsAppFAB />
     </>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
-import Link from "next/link";
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import WhatsAppFAB from "@/components/WhatsAppFAB";
 import { getAllVehicles, addVehicle, updateVehicle, deleteVehicle, getStockIndicators, Vehicle } from "@/lib/vehicleStore";
 
 export default function Admin() {
@@ -363,22 +364,14 @@ export default function Admin() {
 <aside className="w-full md:w-64 flex-shrink-0">
 <div className="glass-card rounded-xl p-6 shadow-sm sticky top-32">
 <nav className="flex flex-col gap-2">
-<a className="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-primary-container/10 transition-all" href="#">
-<span className="material-symbols-outlined">dashboard</span>
-<span className="font-label-bold text-label-bold">Dashboard</span>
-</a>
-<a className="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary-container text-on-primary font-bold shadow-md" href="#">
+<Link className="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary-container text-on-primary font-bold shadow-md" href="/admin">
 <span className="material-symbols-outlined" style={{ fontVariationSettings: '\'FILL\' 1' }}>inventory_2</span>
 <span className="font-label-bold text-label-bold">Inventory</span>
-</a>
+</Link>
 <Link className="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-primary-container/10 transition-all" href="/admin/analytics">
 <span className="material-symbols-outlined">analytics</span>
 <span className="font-label-bold text-label-bold">Analytics</span>
 </Link>
-<a className="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-primary-container/10 transition-all" href="#">
-<span className="material-symbols-outlined">settings</span>
-<span className="font-label-bold text-label-bold">Settings</span>
-</a>
 </nav>
 </div>
 </aside>
@@ -871,11 +864,8 @@ Vehicle Photos (Max 4)
 </form>
 </div>
 </div>
-{/*  WhatsApp FAB  */}
-<a className="fixed bottom-10 right-10 z-[60] bg-[#25D366] text-white p-4 rounded-full shadow-2xl flex items-center gap-3 hover:scale-110 transition-transform group" href="https://wa.me/yournumber">
-<span className="material-symbols-outlined" style={{ fontVariationSettings: '\'FILL\' 1' }}>chat</span>
-<span className="font-label-bold text-label-bold pr-2 max-w-0 group-hover:max-w-xs overflow-hidden transition-all duration-500 whitespace-nowrap">Chat with Support</span>
-</a>
+      {/*  WhatsApp FAB  */}
+      <WhatsAppFAB />
 
 
     </>
