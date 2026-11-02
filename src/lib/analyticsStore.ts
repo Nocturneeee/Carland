@@ -57,17 +57,17 @@ export function generateAnalyticsData(): AnalyticsData {
       return addedDate >= weekStart && addedDate <= weekEnd;
     });
     
-    // Filter vehicles exiting / sold in this week
+    // Filter vehicles exiting / sold / booked in this week
     const exitingVehicles = vehicles.filter((v) => {
       const modifiedDate = new Date(v.lastModified || v.dateAdded || "2026-10-01");
-      return v.status === "Sold" && modifiedDate >= weekStart && modifiedDate <= weekEnd;
+      return (v.status === "Sold" || v.status === "Booked") && modifiedDate >= weekStart && modifiedDate <= weekEnd;
     });
     
     // If we have very few vehicles in inventory dates (for demo richness), distribute gracefully or use actual count
     const vehiclesEntering = Math.max(enteringVehicles.length, i === 0 ? vehicles.length : Math.floor(Math.random() * 3) + 1);
-    const vehiclesExiting = Math.max(exitingVehicles.length, vehicles.some((v: Vehicle) => v.status === "Sold") ? 1 : Math.floor(Math.random() * 2));
+    const vehiclesExiting = Math.max(exitingVehicles.length, vehicles.some((v: Vehicle) => v.status === "Sold" || v.status === "Booked") ? 1 : Math.floor(Math.random() * 2));
     
-    const soldInWeek = vehicles.filter(v => v.status === "Sold");
+    const soldInWeek = vehicles.filter(v => v.status === "Sold" || v.status === "Booked");
     const salesCount = Math.max(exitingVehicles.length, soldInWeek.length > 0 ? 1 : 0);
     
     // Calculate actual revenue from sold vehicles or average vehicle price

@@ -54,8 +54,17 @@ export default function CarDetail({ params }: { params: Promise<{ id: string }> 
                 alt={`${car.make} ${car.model}`}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute top-4 left-4 bg-primary text-white px-4 py-2 rounded-full font-bold text-xs uppercase tracking-wider">
-                {car.badge}
+              <div className="absolute top-4 left-4 flex gap-2">
+                <span className="bg-primary text-white px-4 py-2 rounded-full font-bold text-xs uppercase tracking-wider">
+                  {car.badge}
+                </span>
+                <span className={`px-4 py-2 rounded-full font-bold text-xs uppercase tracking-wider ${
+                  car.status === "Available" ? "bg-emerald-500 text-white" :
+                  car.status === "Booked" ? "bg-amber-500 text-white" :
+                  "bg-rose-500 text-white"
+                }`}>
+                  {car.status}
+                </span>
               </div>
               
               {/* Image Navigation */}
@@ -136,17 +145,36 @@ export default function CarDetail({ params }: { params: Promise<{ id: string }> 
 
             {/* CTA Buttons */}
             <div className="space-y-3 pt-4">
-              <a 
-                href={`https://wa.me/622155999888?text=Halo, saya tertarik dengan ${car.year} ${car.make} ${car.model} ${car.variant} seharga Rp ${car.price.toLocaleString('id-ID')}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full bg-[#25D366] text-white py-4 rounded-xl font-bold flex items-center justify-center gap-3 hover:brightness-110 transition-all shadow-lg shadow-[#25D366]/20"
-              >
-                <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.484 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.309 1.656zm6.224-3.82s.181.106.512.285c1.44.78 3.067 1.193 4.741 1.194 5.588 0 10.138-4.55 10.14-10.137.002-2.707-1.054-5.251-2.973-7.17-1.917-1.917-4.461-2.971-7.168-2.971-5.588 0-10.14 4.551-10.142 10.139-.001 2.016.593 3.98 1.717 5.634l-.999 3.65 3.774-.99zm11.366-5.412c-.333-.167-1.97-.973-2.275-1.084-.305-.11-.527-.167-.749.167-.221.333-.859 1.084-1.054 1.306-.194.222-.389.25-.722.083-.333-.167-1.405-.518-2.675-1.651-.989-.882-1.657-1.971-1.851-2.306-.194-.333-.021-.514.145-.68.15-.149.333-.389.5-.583.167-.194.222-.333.333-.556.111-.222.056-.417-.028-.583-.083-.167-.749-1.806-1.026-2.473-.271-.652-.546-.564-.749-.574l-.639-.012c-.221 0-.583.083-.888.417-.305.333-1.165 1.139-1.165 2.778 0 1.639 1.193 3.222 1.36 3.444.167.222 2.348 3.585 5.69 5.028.794.344 1.415.549 1.899.704.8.254 1.528.218 2.103.132.641-.096 1.97-.805 2.248-1.583.278-.778.278-1.444.194-1.583-.083-.14-.305-.222-.638-.389z" />
-                </svg>
-                Chat via WhatsApp
-              </a>
+              {car.status === "Sold" ? (
+                <div className="w-full bg-surface-container-high text-on-surface-variant py-4 rounded-xl font-bold flex items-center justify-center gap-2 cursor-not-allowed border border-outline-variant/30">
+                  <span className="material-symbols-outlined text-rose-500">cancel</span>
+                  Vehicle Sold Out
+                </div>
+              ) : car.status === "Booked" ? (
+                <a 
+                  href={`https://wa.me/622155999888?text=Halo, saya ingin menanyakan antrean/booking untuk ${car.year} ${car.make} ${car.model} ${car.variant} seharga Rp ${car.price.toLocaleString('id-ID')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-amber-500 hover:bg-amber-600 text-white py-4 rounded-xl font-bold flex items-center justify-center gap-3 transition-all shadow-lg shadow-amber-500/20"
+                >
+                  <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.484 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.309 1.656zm6.224-3.82s.181.106.512.285c1.44.78 3.067 1.193 4.741 1.194 5.588 0 10.138-4.55 10.14-10.137.002-2.707-1.054-5.251-2.973-7.17-1.917-1.917-4.461-2.971-7.168-2.971-5.588 0-10.14 4.551-10.142 10.139-.001 2.016.593 3.98 1.717 5.634l-.999 3.65 3.774-.99zm11.366-5.412c-.333-.167-1.97-.973-2.275-1.084-.305-.11-.527-.167-.749.167-.221.333-.859 1.084-1.054 1.306-.194.222-.389.25-.722.083-.333-.167-1.405-.518-2.675-1.651-.989-.882-1.657-1.971-1.851-2.306-.194-.333-.021-.514.145-.68.15-.149.333-.389.5-.583.167-.194.222-.333.333-.556.111-.222.056-.417-.028-.583-.083-.167-.749-1.806-1.026-2.473-.271-.652-.546-.564-.749-.574l-.639-.012c-.221 0-.583.083-.888.417-.305.333-1.165 1.139-1.165 2.778 0 1.639 1.193 3.222 1.36 3.444.167.222 2.348 3.585 5.69 5.028.794.344 1.415.549 1.899.704.8.254 1.528.218 2.103.132.641-.096 1.97-.805 2.248-1.583.278-.778.278-1.444.194-1.583-.083-.14-.305-.222-.638-.389z" />
+                  </svg>
+                  Inquire (Currently Booked)
+                </a>
+              ) : (
+                <a 
+                  href={`https://wa.me/622155999888?text=Halo, saya tertarik dengan ${car.year} ${car.make} ${car.model} ${car.variant} seharga Rp ${car.price.toLocaleString('id-ID')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-[#25D366] text-white py-4 rounded-xl font-bold flex items-center justify-center gap-3 hover:brightness-110 transition-all shadow-lg shadow-[#25D366]/20"
+                >
+                  <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.484 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.309 1.656zm6.224-3.82s.181.106.512.285c1.44.78 3.067 1.193 4.741 1.194 5.588 0 10.138-4.55 10.14-10.137.002-2.707-1.054-5.251-2.973-7.17-1.917-1.917-4.461-2.971-7.168-2.971-5.588 0-10.14 4.551-10.142 10.139-.001 2.016.593 3.98 1.717 5.634l-.999 3.65 3.774-.99zm11.366-5.412c-.333-.167-1.97-.973-2.275-1.084-.305-.11-.527-.167-.749.167-.221.333-.859 1.084-1.054 1.306-.194.222-.389.25-.722.083-.333-.167-1.405-.518-2.675-1.651-.989-.882-1.657-1.971-1.851-2.306-.194-.333-.021-.514.145-.68.15-.149.333-.389.5-.583.167-.194.222-.333.333-.556.111-.222.056-.417-.028-.583-.083-.167-.749-1.806-1.026-2.473-.271-.652-.546-.564-.749-.574l-.639-.012c-.221 0-.583.083-.888.417-.305.333-1.165 1.139-1.165 2.778 0 1.639 1.193 3.222 1.36 3.444.167.222 2.348 3.585 5.69 5.028.794.344 1.415.549 1.899.704.8.254 1.528.218 2.103.132.641-.096 1.97-.805 2.248-1.583.278-.778.278-1.444.194-1.583-.083-.14-.305-.222-.638-.389z" />
+                  </svg>
+                  Chat via WhatsApp
+                </a>
+              )}
             </div>
           </div>
         </div>

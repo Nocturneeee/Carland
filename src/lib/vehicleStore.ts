@@ -61,7 +61,7 @@ export interface Vehicle {
   acceleration: string;
   seats: number;
   description: string;
-  status: "Available" | "Reserved" | "Sold";
+  status: "Available" | "Booked" | "Sold";
   dateAdded: string;
   lastModified: string;
   licensePlate?: string;
@@ -368,6 +368,7 @@ export function getStockIndicators() {
 
   const totalStock = vehicles.length;
   const availableNow = vehicles.filter((v) => v.status === "Available").length;
+  const bookedNow = vehicles.filter((v) => v.status === "Booked").length;
   const soldThisMonth = vehicles.filter((v) => {
     const date = new Date(v.lastModified);
     return v.status === "Sold" && date.getMonth() === thisMonth && date.getFullYear() === thisYear;
@@ -376,6 +377,7 @@ export function getStockIndicators() {
   return {
     totalStock,
     availableNow,
+    bookedNow,
     soldThisMonth,
   };
 }

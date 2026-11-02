@@ -7,7 +7,7 @@ import { getAllVehicles, addVehicle, updateVehicle, deleteVehicle, getStockIndic
 export default function Admin() {
   const [mounted, setMounted] = useState(false);
   const [vehicles, setVehicles] = useState<Vehicle[]>([]);
-  const [stockIndicators, setStockIndicators] = useState({ totalStock: 0, availableNow: 0, soldThisMonth: 0 });
+  const [stockIndicators, setStockIndicators] = useState({ totalStock: 0, availableNow: 0, bookedNow: 0, soldThisMonth: 0 });
   const [editingId, setEditingId] = useState<string | null>(null);
   const [vehicleImages, setVehicleImages] = useState<string[]>([]);
   const [formData, setFormData] = useState<{
@@ -23,7 +23,7 @@ export default function Admin() {
     drivetrain: string;
     mileage: number;
     owners: number;
-    status: "Available" | "Reserved" | "Sold";
+    status: "Available" | "Booked" | "Sold";
     // Documentation & Legal
     licensePlate: string;
     plateType: string;
@@ -325,6 +325,14 @@ export default function Admin() {
     }
   };
 
+  const handleStatusChange = (id: string, newStatus: "Available" | "Booked" | "Sold") => {
+    const updated = updateVehicle(id, { status: newStatus });
+    if (updated) {
+      setVehicles(vehicles.map((v) => (v.id === id ? updated : v)));
+      setStockIndicators(getStockIndicators());
+    }
+  };
+
   if (!mounted) return null;
 
   return (
@@ -389,7 +397,7 @@ export default function Admin() {
                 </button>
 </div>
 {/*  Stats Bar  */}
-<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
 <div className="glass-card p-6 rounded-xl shadow-sm border border-white/20">
 <p className="text-on-surface-variant font-label-bold text-label-bold mb-1">Total Stock</p>
 <p className="font-display-lg text-headline-lg text-primary">{stockIndicators.totalStock}</p>
@@ -397,6 +405,10 @@ export default function Admin() {
 <div className="glass-card p-6 rounded-xl shadow-sm border border-white/20">
 <p className="text-on-surface-variant font-label-bold text-label-bold mb-1">Available Now</p>
 <p className="font-display-lg text-headline-lg text-tertiary">{stockIndicators.availableNow}</p>
+</div>
+<div className="glass-card p-6 rounded-xl shadow-sm border border-white/20">
+<p className="text-on-surface-variant font-label-bold text-label-bold mb-1">Booked</p>
+<p className="font-display-lg text-headline-lg text-amber-500">{stockIndicators.bookedNow}</p>
 </div>
 <div className="glass-card p-6 rounded-xl shadow-sm border border-white/20">
 <p className="text-on-surface-variant font-label-bold text-label-bold mb-1">Sold this month</p>
@@ -432,14 +444,19 @@ export default function Admin() {
 <p className="font-label-bold text-on-surface">Rp {vehicle.price.toLocaleString("id-ID")}</p>
 </td>
 <td className="px-6 py-4">
-<span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-bold ${
-vehicle.status === "Available" ? "bg-tertiary-container/20 text-tertiary" :
-vehicle.status === "Reserved" ? "bg-secondary-container/20 text-secondary" :
-"bg-error-container/20 text-error"
-}`}>
-<span className="w-1.5 h-1.5 rounded-full mr-2" style={{backgroundColor: "currentColor"}}></span>
-{vehicle.status}
-</span>
+<select
+  value={vehicle.status}
+  onChange={(e) => handleStatusChange(vehicle.id, e.target.value as "Available" | "Booked" | "Sold")}
+  className={`px-3 py-1.5 rounded-xl text-xs font-bold outline-none cursor-pointer transition-all ${
+    vehicle.status === "Available" ? "bg-tertiary-container/20 text-tertiary border border-tertiary/30" :
+    vehicle.status === "Booked" ? "bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/30" :
+    "bg-error-container/20 text-error border border-error/30"
+  }`}
+>
+  <option value="Available" className="bg-surface text-on-surface">Available</option>
+  <option value="Booked" className="bg-surface text-on-surface">Booked</option>
+  <option value="Sold" className="bg-surface text-on-surface">Sold</option>
+</select>
 </td>
 <td className="px-6 py-4">
 <div className="flex items-center justify-center gap-2">
@@ -544,10 +561,10 @@ Basic Information
 </div>
 <div className="space-y-2">
 <label className="font-label-bold text-label-bold text-on-surface-variant">Status</label>
-<select value={formData.status} onChange={(e) => setFormData({...formData, status: e.target.value as "Available" | "Reserved" | "Sold"})} className="w-full bg-surface-container/50 border-outline-variant/30 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none appearance-none">
-<option>Available</option>
-<option>Reserved</option>
-<option>Sold</option>
+<select value={formData.status} onChange={(e) => setFormData({...formData, status: e.target.value as "Available" | "Booked" | "Sold"})} className="w-full bg-surface-container/50 border-outline-variant/30 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none appearance-none">
+<option value="Available">Available</option>
+<option value="Booked">Booked</option>
+<option value="Sold">Sold</option>
 </select>
 </div>
 <div className="space-y-2">

@@ -104,7 +104,7 @@ export default function Home() {
             {/* Hero Right - Floating Cards Visuals */}
             <div className="relative h-[300px] sm:h-[420px] lg:h-[600px] hidden sm:block">
               <div className="absolute inset-0 rounded-3xl overflow-hidden shadow-2xl transform rotate-2 lg:rotate-3 scale-100 lg:scale-105 border border-white/20">
-                <img className="w-full h-full object-cover" alt="Luxury car in showroom" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxqlboInAGaUX_yGMuwdK_Q67cEIamgvktuM8jQVeHCi47vU1GmnCXKVcNp8EJrRxyM-Ma61Q9f8pd6WOijco_wW7WgCLUt9BZM1Tb3nI6lbIsvhTLE5j-2BUzvcbLx6XTBz7jdlTmEv4Gu6NPaAPJpgyPX8uGbdld6RonbEoC6faraiAKsHJkU0Xusbn5Tgi-K0mMB8ZhfXYV4HmuFPjhr-SgmsZ7PKCPggnAN75k54SeG5-YopcuOelxFK5v1PYyj4ithW7Ziw" />
+                <img className="w-full h-full object-cover" alt="Luxury car in showroom" src="https://i.pinimg.com/736x/f6/0a/b2/f60ab263afb9779b742bc60cd31a6748.jpg" />
               </div>
               {/* Glassmorphic Info Cards */}
               <div className="absolute top-10 -left-4 lg:-left-10 glass-card p-4 lg:p-6 rounded-2xl w-44 lg:w-56 floating-anim" style={{ animationDelay: '0.2s' }}>

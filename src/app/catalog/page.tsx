@@ -16,7 +16,7 @@ export default function Catalog() {
 
   useEffect(() => {
     setMounted(true);
-    setVehicles(getAllVehicles().filter((v) => v.status === "Available"));
+    setVehicles(getAllVehicles().filter((v) => v.status === "Available" || v.status === "Booked"));
   }, []);
 
   const filteredCars = vehicles.filter((car) => {
@@ -117,9 +117,15 @@ export default function Catalog() {
             alt={`${car.make} ${car.model}`}
             src={car.images[0]}
           />
-          <div className="absolute top-4 left-4 bg-primary text-white font-label-bold text-[10px] px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">
-            {car.badge}
-          </div>
+          {car.status === "Booked" ? (
+            <div className="absolute top-4 left-4 bg-amber-500 text-white font-label-bold text-[10px] px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">
+              Booked
+            </div>
+          ) : (
+            <div className="absolute top-4 left-4 bg-primary text-white font-label-bold text-[10px] px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">
+              {car.badge || "Available"}
+            </div>
+          )}
         </div>
         <div className="p-8 space-y-4">
           <div className="flex justify-between items-start">
