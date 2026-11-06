@@ -105,18 +105,6 @@ export default function Contact() {
 </div>
 </div>
 {/*  Twitter/X  */}
-<div className="md:col-span-2 glass-card p-6 flex items-center gap-6 group">
-<div className="w-14 h-14 bg-on-surface-variant/10 rounded-full flex items-center justify-center flex-shrink-0 group-hover:rotate-12 transition-transform">
-<span className="material-symbols-outlined text-on-surface text-2xl">chat_bubble</span>
-</div>
-<div className="flex-grow">
-<h4 className="font-label-bold text-label-bold text-on-surface">Direct Inquiry</h4>
-<p className="text-on-surface-variant text-sm">Average response time: &lt; 2 hours</p>
-</div>
-<button className="p-3 rounded-full bg-primary-container/10 text-primary">
-<span className="material-symbols-outlined">send</span>
-</button>
-</div>
 </div>
 </section>
 {/*  Newsletter / Contact Map Section  */}
